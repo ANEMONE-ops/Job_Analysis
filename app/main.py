@@ -12,6 +12,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel, Field
 
 from .config import ROOT_DIR, load_config
+from .skills import SKILL_DICT
 from .pipeline import Pipeline, bootstrap
 
 config = load_config()
@@ -177,8 +178,23 @@ class MatchRequest(BaseModel):
     name: str = ""
 
 
+class LoginRequest(BaseModel):
+    username: str = ""
+    password: str = ""
+
+
 class IngestRequest(BaseModel):
     jobs: list[dict] = Field(default_factory=list)
+
+
+# ---------- 认证（演示用，默认账号 admin/admin123） ----------
+@app.post("/api/v1/auth/login")
+def auth_login(req: LoginRequest):
+    if req.username == "admin" and req.password == "admin123":
+        return {"token": "demo-token-" + req.username,
+                "user": {"username": req.username, "display_name": "管理员",
+                         "role": "admin", "avatar": ""}}
+    raise HTTPException(status_code=401, detail="用户名或密码错误")
 
 
 # ---------- 健康检查 ----------
@@ -232,6 +248,18 @@ def list_roles():
 def role_timeline(role_name: str, window_a: str = "2020-01-01", window_b: str = "2026-01-01"):
     p = get_pipeline()
     return p.role_timeline(role_name, window_a, window_b)
+
+
+# ---------- 技能本体 ----------
+@app.get("/api/v1/skills/ontology")
+def skills_ontology():
+    """技能本体库：技能名 + 分类 + 别名（供知识库页使用）。"""
+    skills = [
+        {"name": name, "category": meta.get("category", "其他"),
+         "aliases": meta.get("aliases", [])}
+        for name, meta in SKILL_DICT.items()
+    ]
+    return {"skills": skills, "count": len(skills)}
 
 
 # ---------- 全景图谱 ----------

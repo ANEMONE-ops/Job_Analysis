@@ -562,11 +562,248 @@ body {
 .tag-cyan   { background: var(--color-info-alpha12);    color: var(--color-info-400);    border: 1px solid rgba(6,182,212,0.2); }
 
 /* ================================================================
-   MATCH PANEL — 人岗匹配面板
+   MATCH PANEL — 人岗匹配（单列纵向：横幅 → 输入 → 评分 → 详情 → 解释 → 学习路径）
    ================================================================ */
-.match-layout { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
-.match-input-panel  { display: flex; flex-direction: column; gap: var(--space-4); }
-.match-result-panel { display: flex; flex-direction: column; gap: var(--space-4); }
+.match-page { display: flex; flex-direction: column; gap: var(--space-5); }
+.match-page .card { margin-bottom: 0; }
+
+/* 顶部横幅（背景图 + 渐变遮罩） */
+.match-hero {
+  position: relative; overflow: hidden;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-7);
+  box-shadow: var(--shadow-md);
+  background-image:
+    linear-gradient(90deg, rgba(10,14,26,0.90), rgba(20,26,50,0.55)),
+    url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=70');
+  background-size: cover; background-position: center;
+}
+[data-theme="light"] .match-hero {
+  background-image:
+    linear-gradient(90deg, rgba(255,255,255,0.92), rgba(240,244,255,0.60)),
+    url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=70');
+}
+.match-hero-title { font-size: var(--text-2xl); font-weight: var(--font-extrabold); letter-spacing: 0.5px; }
+.match-hero-sub { font-size: var(--text-md); color: var(--color-text-secondary); margin-top: var(--space-2); line-height: 1.7; max-width: 760px; }
+.match-hero-actions { display: flex; gap: var(--space-3); margin-top: var(--space-5); flex-wrap: wrap; }
+
+/* 步骤标题 */
+.match-step-head { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4); }
+.step-num {
+  width: 30px; height: 30px; flex-shrink: 0;
+  border-radius: var(--radius-md);
+  background: var(--gradient-primary);
+  color: #fff; font-weight: var(--font-bold); font-size: var(--text-sm);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 12px rgba(59,130,246,0.35);
+}
+.match-step-title { font-size: var(--text-lg); font-weight: var(--font-bold); }
+
+/* 输入区网格：岗位 | 上传 | 文本（跨两列） */
+.match-input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+.match-field { display: flex; flex-direction: column; gap: var(--space-2); }
+.match-field-span { grid-column: span 2; }
+.match-field-label { font-size: var(--text-xs); color: var(--color-text-secondary); font-weight: var(--font-semibold); }
+.match-actions { display: flex; justify-content: center; padding-top: var(--space-2); }
+
+/* 评分横幅（右侧数据图表背景） */
+.match-summary {
+  display: flex; align-items: center; gap: var(--space-6); flex-wrap: wrap;
+  background-color: var(--color-bg-elevated);
+  background-image:
+    linear-gradient(100deg, rgba(26,31,53,0.96) 35%, rgba(26,31,53,0.72)),
+    url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=70');
+  background-size: cover; background-position: center;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-5) var(--space-6);
+  box-shadow: var(--shadow-md);
+}
+[data-theme="light"] .match-summary {
+  background-image:
+    linear-gradient(100deg, rgba(255,255,255,0.97) 35%, rgba(245,248,255,0.70)),
+    url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=70');
+}
+
+/* 带背景图的卡片（人岗匹配页专用，内容保持可读） */
+.match-input-card {
+  background-color: var(--color-bg-elevated);
+  background-image:
+    linear-gradient(135deg, rgba(26,31,53,0.97) 30%, rgba(26,31,53,0.80)),
+    url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1400&q=70');
+  background-size: cover; background-position: center;
+}
+[data-theme="light"] .match-input-card {
+  background-image:
+    linear-gradient(135deg, rgba(255,255,255,0.97) 30%, rgba(248,250,255,0.78)),
+    url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1400&q=70');
+}
+.match-explainer-card {
+  background-color: var(--color-bg-elevated);
+  background-image:
+    linear-gradient(100deg, rgba(26,31,53,0.97) 30%, rgba(26,31,53,0.78)),
+    url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=70');
+  background-size: cover; background-position: center;
+}
+[data-theme="light"] .match-explainer-card {
+  background-image:
+    linear-gradient(100deg, rgba(255,255,255,0.97) 30%, rgba(248,250,255,0.78)),
+    url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=70');
+}
+.match-path-card {
+  background-color: var(--color-bg-elevated);
+  background-image:
+    linear-gradient(100deg, rgba(26,31,53,0.97) 30%, rgba(26,31,53,0.78)),
+    url('https://images.unsplash.com/photo-1484417894907-623942c8ee29?auto=format&fit=crop&w=1400&q=70');
+  background-size: cover; background-position: center;
+}
+[data-theme="light"] .match-path-card {
+  background-image:
+    linear-gradient(100deg, rgba(255,255,255,0.97) 30%, rgba(248,250,255,0.78)),
+    url('https://images.unsplash.com/photo-1484417894907-623942c8ee29?auto=format&fit=crop&w=1400&q=70');
+}
+.match-score-big {
+  display: flex; align-items: baseline; gap: 4px;
+  font-size: 56px; font-weight: var(--font-extrabold);
+  color: var(--color-primary-500);
+  font-variant-numeric: tabular-nums; line-height: 1;
+}
+.match-score-big .unit { font-size: var(--text-lg); color: var(--color-text-muted); font-weight: var(--font-normal); }
+.match-summary-dim { display: flex; gap: var(--space-2); flex-wrap: wrap; margin-left: auto; }
+.match-summary-dim .dim-chip {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-root);
+  border: 1px solid var(--color-border-default);
+  min-width: 72px;
+}
+.dim-chip .dv { font-size: var(--text-lg); font-weight: var(--font-bold); font-variant-numeric: tabular-nums; }
+.dim-chip .dl { font-size: var(--text-xs); color: var(--color-text-muted); }
+
+/* 详情三栏 */
+.match-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  align-items: stretch;
+}
+
+/* 学习路径横向步骤 */
+.match-path-h { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+.match-path-step {
+  flex: 1; min-width: 200px;
+  background: var(--color-bg-root);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+  transition: border-color var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
+}
+.match-path-step:hover { border-color: var(--color-border-strong); box-shadow: var(--shadow-glow-primary); }
+.match-path-step .step-top { display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2); }
+.match-path-step .step-badge {
+  width: 22px; height: 22px; flex-shrink: 0;
+  border-radius: var(--radius-full);
+  background: var(--gradient-primary); color: #fff;
+  font-size: var(--text-xs); font-weight: var(--font-bold);
+  display: flex; align-items: center; justify-content: center;
+}
+.match-path-step .step-skill { font-size: var(--text-md); font-weight: var(--font-semibold); }
+.match-path-step .step-meta { font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.9; }
+
+@media (max-width: 1200px) {
+  .match-detail-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .match-input-grid { grid-template-columns: 1fr; }
+  .match-field-span { grid-column: span 1; }
+  .match-summary-dim { margin-left: 0; width: 100%; }
+}
+
+/* 知识库与个人简历共用组件 */
+.kb-search-bar {
+  display: flex; gap: var(--space-3); align-items: center; flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+}
+.kb-count { font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-4); }
+
+.kb-cat-filter { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4); }
+.kb-chip {
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-default);
+  transition: all var(--duration-fast) var(--ease-out);
+  user-select: none;
+}
+.kb-chip:hover { border-color: var(--color-border-strong); }
+.kb-chip.active { background: var(--color-primary-alpha15); color: var(--color-primary-500); border-color: var(--color-primary-500); font-weight: var(--font-semibold); }
+
+.kb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--space-4); }
+.kb-card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  cursor: pointer;
+  transition: transform var(--duration-normal) var(--ease-spring), border-color var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
+  will-change: transform;
+}
+.kb-card:hover { transform: translateY(-2px); border-color: var(--color-border-strong); box-shadow: var(--shadow-glow-primary); }
+.kb-card-icon { width: 40px; height: 40px; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: 17px; margin-bottom: var(--space-3); }
+.kb-card-title { font-size: var(--text-md); font-weight: var(--font-semibold); margin-bottom: var(--space-2); }
+.kb-card-desc { font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.kb-card-meta { display: flex; gap: var(--space-3); margin-top: var(--space-3); font-size: var(--text-xs); color: var(--color-text-muted); }
+
+.profile-head {
+  display: flex; align-items: center; gap: var(--space-4);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-6);
+  margin-bottom: var(--space-5);
+}
+.profile-avatar {
+  width: 64px; height: 64px; flex-shrink: 0;
+  border-radius: var(--radius-full);
+  background: var(--gradient-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; color: #fff;
+  box-shadow: 0 0 20px rgba(59,130,246,0.3);
+}
+.profile-name { font-size: var(--text-xl); font-weight: var(--font-extrabold); }
+.profile-tagline { font-size: var(--text-sm); color: var(--color-text-secondary); margin-top: 2px; }
+
+.profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+@media (max-width: 1200px) {
+  .profile-grid { grid-template-columns: 1fr; }
+}
+
+.profile-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); margin-bottom: var(--space-5); }
+.profile-stat {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+  text-align: center;
+}
+.profile-stat .pv { font-size: var(--text-xl); font-weight: var(--font-extrabold); font-variant-numeric: tabular-nums; }
+.profile-stat .pl { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 2px; }
+.profile-stat .pi { font-size: 18px; margin-bottom: var(--space-2); }
+
+/* 技能本体分类分组（知识库 / 简历共用） */
+.cat-block { margin-bottom: var(--space-5); }
+.cat-block-title { font-size: var(--text-sm); font-weight: var(--font-semibold); color: var(--color-text-muted); margin-bottom: var(--space-3); text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: var(--space-2); }
+.cat-block-title .cnt { font-size: var(--text-xs); color: var(--color-text-disabled); font-weight: var(--font-normal); }
 
 .score-ring {
   width: 140px; height: 140px;
@@ -860,7 +1097,6 @@ body {
 /* ≤ 1200px: 平板横屏 */
 @media (max-width: 1200px) {
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .match-layout { grid-template-columns: 1fr; }
   .timeline-compare { grid-template-columns: 1fr; }
   .metrics-grid { grid-template-columns: repeat(2, 1fr); }
   .gov-grid { grid-template-columns: 1fr; }
@@ -872,6 +1108,104 @@ body {
   .stats-grid { grid-template-columns: 1fr; }
   .role-grid { grid-template-columns: 1fr; }
   .content-area { padding: var(--space-4); }
+  .profile-stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ================================================================
+   DASHBOARD — 全景总览
+   ================================================================ */
+/* 顶部横幅：渐变底 + 大标题 + 快捷动作 */
+.dash-hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(1000px 300px at 80% -80%, rgba(139,92,246,0.35), transparent 60%),
+    radial-gradient(800px 300px at 10% 140%, rgba(59,130,246,0.30), transparent 55%),
+    linear-gradient(135deg, #111c3a, #161a33);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-7);
+  margin-bottom: var(--space-6);
+  box-shadow: var(--shadow-md);
+}
+[data-theme="light"] .dash-hero {
+  background:
+    radial-gradient(1000px 300px at 80% -80%, rgba(124,58,237,0.12), transparent 60%),
+    radial-gradient(800px 300px at 10% 140%, rgba(37,99,235,0.10), transparent 55%),
+    linear-gradient(135deg, #eef2ff, #f5f3ff);
+}
+.dash-hero-title { font-size: var(--text-2xl); font-weight: var(--font-extrabold); letter-spacing: 0.5px; }
+.dash-hero-sub { font-size: var(--text-md); color: var(--color-text-secondary); margin-top: var(--space-2); line-height: 1.7; max-width: 720px; }
+.dash-hero-actions { display: flex; gap: var(--space-3); margin-top: var(--space-5); flex-wrap: wrap; }
+
+/* 横排小指标条：细分数字（可信度达标 / 新兴技能等） */
+.dash-mini-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+.dash-mini {
+  display: flex; align-items: center; gap: var(--space-3);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
+  transition: border-color var(--duration-normal) var(--ease-out);
+}
+.dash-mini:hover { border-color: var(--color-border-strong); }
+.dash-mini i { width: 34px; height: 34px; flex-shrink: 0; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 14px; }
+.dash-mini .v { font-size: var(--text-lg); font-weight: var(--font-bold); font-variant-numeric: tabular-nums; }
+.dash-mini .l { font-size: var(--text-xs); color: var(--color-text-muted); }
+.dash-mini.blue i   { background: var(--color-primary-alpha15); color: var(--color-primary-500); }
+.dash-mini.green i  { background: var(--color-success-alpha12); color: var(--color-success-500); }
+.dash-mini.amber i  { background: var(--color-warning-alpha12); color: var(--color-warning-500); }
+.dash-mini.purple i { background: var(--color-purple-alpha12); color: var(--color-purple-500); }
+
+/* 总览双栏 + 三栏 */
+.dash-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-5); }
+.dash-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+
+/* 快捷入口卡片 */
+.quick-card {
+  display: flex; align-items: center; gap: var(--space-4);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  cursor: pointer;
+  transition: transform var(--duration-normal) var(--ease-spring), border-color var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
+  will-change: transform;
+}
+.quick-card:hover { transform: translateY(-2px); border-color: var(--color-border-strong); box-shadow: var(--shadow-glow-primary); }
+.quick-card .qc-icon { width: 46px; height: 46px; flex-shrink: 0; border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.quick-card .qc-title { font-size: var(--text-md); font-weight: var(--font-semibold); }
+.quick-card .qc-desc { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 2px; }
+.quick-card .qc-arrow { margin-left: auto; color: var(--color-text-muted); transition: transform var(--duration-fast) var(--ease-out); }
+.quick-card:hover .qc-arrow { transform: translateX(3px); color: var(--color-primary-500); }
+.qc-blue   .qc-icon { background: var(--color-primary-alpha15); color: var(--color-primary-500); }
+.qc-cyan   .qc-icon { background: var(--color-info-alpha12);    color: var(--color-info-500); }
+.qc-amber  .qc-icon { background: var(--color-warning-alpha12); color: var(--color-warning-500); }
+.qc-green  .qc-icon { background: var(--color-success-alpha12); color: var(--color-success-500); }
+.qc-purple .qc-icon { background: var(--color-purple-alpha12);  color: var(--color-purple-500); }
+.qc-pink   .qc-icon { background: var(--color-danger-alpha12);  color: var(--color-danger-500); }
+
+/* 系统状态面板 */
+.sys-row { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; border-bottom: 1px solid var(--color-border-default); }
+.sys-row:last-child { border-bottom: none; }
+.sys-row .dot { width: 9px; height: 9px; border-radius: var(--radius-full); flex-shrink: 0; }
+.sys-row .dot.on { background: var(--color-success-500); box-shadow: 0 0 8px rgba(16,185,129,0.5); }
+.sys-row .k { font-size: var(--text-sm); color: var(--color-text-secondary); }
+.sys-row .v { margin-left: auto; font-size: var(--text-sm); font-weight: var(--font-semibold); font-variant-numeric: tabular-nums; }
+.sys-row .v .unit { font-size: var(--text-xs); color: var(--color-text-muted); font-weight: var(--font-normal); margin-left: 2px; }
+
+@media (max-width: 1200px) {
+  .dash-mini-strip { grid-template-columns: repeat(2, 1fr); }
+  .dash-grid-3 { grid-template-columns: 1fr; }
+  .dash-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .dash-mini-strip { grid-template-columns: 1fr; }
 }
 
 /* ================================================================
@@ -991,6 +1325,88 @@ body {
   --el-table-border-color: var(--color-border-default) !important;
 }
 [data-theme="light"] .el-progress-bar__outer { background: rgba(0,0,0,0.04) !important; }
+
+/* ================================================================
+   LOGIN & USER — 登录弹窗 / 顶栏用户区
+   ================================================================ */
+.login-modal {
+  position: fixed; inset: 0; z-index: 3000;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(5, 8, 18, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.login-card {
+  width: 400px; max-width: 92vw;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  animation: fadeIn var(--duration-normal) var(--ease-out) both;
+}
+.login-cover {
+  height: 140px;
+  background-image:
+    linear-gradient(135deg, rgba(59,130,246,0.55), rgba(139,92,246,0.55)),
+    url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=70');
+  background-size: cover; background-position: center;
+  position: relative;
+}
+.login-cover::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 40%, var(--color-bg-elevated));
+}
+.login-body { padding: var(--space-5); }
+.login-title { font-size: var(--text-lg); font-weight: var(--font-extrabold); display: flex; align-items: center; gap: var(--space-2); }
+.login-hint { font-size: var(--text-xs); color: var(--color-text-muted); margin: var(--space-2) 0 var(--space-4); }
+
+/* 顶栏用户区 */
+.user-chip {
+  display: flex; align-items: center; gap: var(--space-2);
+  padding: 4px 10px 4px 4px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-default);
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+.user-chip:hover { border-color: var(--color-border-strong); }
+.user-avatar {
+  width: 26px; height: 26px; border-radius: var(--radius-full);
+  background: var(--gradient-primary);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 12px; flex-shrink: 0;
+}
+.user-name { font-size: var(--text-sm); font-weight: var(--font-semibold); max-width: 110px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ================================================================
+   PROFILE FORM — 个人简历问答框
+   ================================================================ */
+.profile-form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+.profile-form .pf-item { display: flex; flex-direction: column; gap: var(--space-1); }
+.pf-label { font-size: var(--text-xs); color: var(--color-text-secondary); font-weight: var(--font-semibold); }
+.pf-full { grid-column: span 2; }
+@media (max-width: 1200px) { .profile-form { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { .profile-form { grid-template-columns: 1fr; } .pf-full { grid-column: span 1; } }
+
+/* 头像背景（Unsplash 图片，若网络不可用则回退渐变） */
+.profile-avatar { background-image: linear-gradient(135deg, rgba(59,130,246,0.85), rgba(139,92,246,0.85)), url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=70'); background-size: cover; background-position: center; }
+
+/* 总览 hero 背景图片 */
+.dash-hero {
+  background-image:
+    radial-gradient(1000px 300px at 80% -80%, rgba(139,92,246,0.35), transparent 60%),
+    radial-gradient(800px 300px at 10% 140%, rgba(59,130,246,0.30), transparent 55%),
+    linear-gradient(135deg, rgba(17,28,58,0.92), rgba(22,26,51,0.92)),
+    url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1400&q=70');
+  background-size: cover; background-position: center;
+}
 
 /* ================================================================
    THEME TOGGLE — 主题切换按钮
@@ -1355,6 +1771,24 @@ body {
         <el-button size="small" type="primary" @click="showAbout = true" aria-label="关于系统">
           <i class="fas fa-info-circle" style="margin-right:6px" aria-hidden="true"></i>关于
         </el-button>
+        <!-- 用户区：未登录显示登录按钮，已登录显示头像 chip + 退出 -->
+        <div v-if="!currentUser" class="user-chip" @click="showLogin = true" role="button" tabindex="0" aria-label="登录" @keydown.enter="showLogin = true">
+          <div class="user-avatar"><i class="fas fa-user" aria-hidden="true"></i></div>
+          <span class="user-name">登录</span>
+        </div>
+        <el-dropdown v-else trigger="click" @command="handleUserCommand">
+          <div class="user-chip" role="button" tabindex="0" aria-label="用户菜单">
+            <div class="user-avatar"><i class="fas fa-user" aria-hidden="true"></i></div>
+            <span class="user-name">{{ currentUser.display_name || currentUser.username }}</span>
+            <i class="fas fa-chevron-down" style="font-size:11px;color:var(--color-text-muted)" aria-hidden="true"></i>
+          </div>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item command="profile"><i class="fas fa-id-card" style="margin-right:6px" aria-hidden="true"></i>个人简历</el-dropdown-item>
+              <el-dropdown-item command="logout" divided><i class="fas fa-sign-out-alt" style="margin-right:6px" aria-hidden="true"></i>退出登录</el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
       </div>
     </header>
 
@@ -1417,6 +1851,7 @@ body {
                     <button class="graph-ctrl-btn" @click="graphZoomOut" title="缩小" aria-label="缩小"><i class="fas fa-minus"></i></button>
                     <button class="graph-ctrl-btn" @click="graphResetView" title="重置视图" aria-label="重置视图"><i class="fas fa-compress-arrows-alt"></i></button>
                     <button class="graph-ctrl-btn" @click="renderGraph" title="刷新布局" aria-label="刷新布局"><i class="fas fa-sync-alt"></i></button>
+                    <button class="graph-ctrl-btn" @click="exportGraph" title="导出图谱图片" aria-label="导出图谱图片"><i class="fas fa-file-export"></i></button>
                   </div>
                 </div>
               </div>
@@ -1468,7 +1903,7 @@ body {
                   <span class="label">趋势</span>
                   <span class="value" style="color:var(--color-warning-500)">{{ selectedNode.trend }}</span>
                 </div>
-                <div class="node-detail-row" v-if="selectedNode.trustScore !== undefined">
+                <div class="node-detail-row" v-if="selectedNode.trustScore != null">
                   <span class="label">可信度</span>
                   <span class="value">{{ selectedNode.trustScore }}%</span>
                 </div>
@@ -1519,11 +1954,104 @@ body {
         </div>
       </div>
 
+      <!-- ========== 全景总览 ========== -->
+      <div v-if="currentPage === 'dashboard'" class="fade-in">
+        <!-- 顶部横幅 -->
+        <div class="dash-hero">
+          <div class="dash-hero-title"><i class="fas fa-th-large" style="color:var(--color-primary-500);margin-right:10px" aria-hidden="true"></i>岗位能力图谱 · 全景总览</div>
+          <div class="dash-hero-sub">多源异构数据驱动的岗位与能力图谱构建与动态演化分析系统。覆盖新岗位发现、能力演化追踪、人岗匹配诊断与学习路径推荐的全流程闭环。</div>
+          <div class="dash-hero-actions">
+            <el-button type="primary" @click="currentPage = 'graph'" aria-label="查看全景图谱">
+              <i class="fas fa-project-diagram" style="margin-right:6px" aria-hidden="true"></i>查看全景图谱
+            </el-button>
+            <el-button @click="currentPage = 'match'" aria-label="开始人岗匹配">
+              <i class="fas fa-diagnoses" style="margin-right:6px" aria-hidden="true"></i>开始人岗匹配
+            </el-button>
+            <el-button @click="loadDashboard" :loading="globalLoading" aria-label="刷新总览">
+              <i class="fas fa-sync-alt" style="margin-right:6px" aria-hidden="true"></i>刷新总览
+            </el-button>
+          </div>
+        </div>
+
+        <!-- 核心指标 -->
+        <div class="stats-grid">
+          <div class="stat-card blue">
+            <div class="stat-icon blue"><i class="fas fa-briefcase" aria-hidden="true"></i></div>
+            <div class="stat-value">{{ dashboardStats.roles }}</div>
+            <div class="stat-label">岗位节点</div>
+            <div class="stat-change up"><i class="fas fa-project-diagram" aria-hidden="true"></i> 覆盖 {{ dashboardStats.industries }} 个行业</div>
+          </div>
+          <div class="stat-card green">
+            <div class="stat-icon green"><i class="fas fa-cogs" aria-hidden="true"></i></div>
+            <div class="stat-value">{{ dashboardStats.skills }}</div>
+            <div class="stat-label">技能节点</div>
+            <div class="stat-change up"><i class="fas fa-layer-group" aria-hidden="true"></i> {{ dashboardStats.levels }} 个级别</div>
+          </div>
+          <div class="stat-card amber">
+            <div class="stat-icon amber"><i class="fas fa-link" aria-hidden="true"></i></div>
+            <div class="stat-value">{{ dashboardStats.edges }}</div>
+            <div class="stat-label">关系连线</div>
+            <div class="stat-change up"><i class="fas fa-fire" aria-hidden="true"></i> {{ dashboardStats.growing }} 个增长技能</div>
+          </div>
+          <div class="stat-card purple">
+            <div class="stat-icon purple"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+            <div class="stat-value">{{ (evalData.matching.accuracy * 100).toFixed(1) }}%</div>
+            <div class="stat-label">人岗匹配准确率</div>
+            <div class="stat-change up"><i class="fas fa-check-circle" aria-hidden="true"></i> 目标 ≥ 90%</div>
+          </div>
+        </div>
+
+        <!-- 横排小指标 -->
+        <div class="dash-mini-strip">
+          <div class="dash-mini blue"><i class="fas fa-shield-alt" aria-hidden="true"></i><div><div class="v">{{ dashboardStats.highTrust }}</div><div class="l">高可信度岗位</div></div></div>
+          <div class="dash-mini green"><i class="fas fa-fire-alt" aria-hidden="true"></i><div><div class="v">{{ dashboardStats.growing }}</div><div class="l">增长/萌芽技能</div></div></div>
+          <div class="dash-mini amber"><i class="fas fa-tachometer-alt" aria-hidden="true"></i><div><div class="v">{{ dashboardStats.avgTrust }}%</div><div class="l">平均可信度</div></div></div>
+          <div class="dash-mini purple"><i class="fas fa-robot" aria-hidden="true"></i><div><div class="v">{{ (evalData.hallucination_rate * 100).toFixed(1) }}%</div><div class="l">幻觉率（≤ 2%）</div></div></div>
+        </div>
+
+        <!-- 核心能力闭环 -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-rocket" aria-hidden="true"></i> 核心能力闭环</div>
+            <el-tag type="info" size="small">从数据到决策的六步闭环</el-tag>
+          </div>
+          <div class="dash-grid-3">
+            <div v-for="(qc, idx) in quickCards" :key="qc.key" class="quick-card" :class="qc.color" @click="currentPage = qc.key" :style="{ animationDelay: idx * 0.05 + 's' }">
+              <div class="qc-icon"><i :class="qc.icon" aria-hidden="true"></i></div>
+              <div>
+                <div class="qc-title">{{ qc.title }}</div>
+                <div class="qc-desc">{{ qc.desc }}</div>
+              </div>
+              <i class="fas fa-chevron-right qc-arrow" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- 系统状态 -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-heartbeat" aria-hidden="true"></i> 系统运行状态</div>
+          </div>
+          <div class="dash-grid">
+            <div>
+              <div class="sys-row"><span class="dot on" aria-hidden="true"></span><span class="k">图谱存储</span><span class="v">NetworkX 时序图 <span class="unit">在线</span></span></div>
+              <div class="sys-row"><span class="dot on" aria-hidden="true"></span><span class="k">LLM 抽取器</span><span class="v">Mock（无 Key 可跑通）<span class="unit">在线</span></span></div>
+              <div class="sys-row"><span class="dot on" aria-hidden="true"></span><span class="k">数据治理管线</span><span class="v">六维可信度 <span class="unit">在线</span></span></div>
+            </div>
+            <div>
+              <div class="sys-row"><span class="k">数据规模</span><span class="v">{{ dashboardStats.jobCount }} <span class="unit">条岗位 · {{ dashboardStats.resumeCount }} 份简历</span></span></div>
+              <div class="sys-row"><span class="k">评测指标</span><span class="v">{{ evalMetrics.length }} <span class="unit">项全部达标</span></span></div>
+              <div class="sys-row"><span class="k">测试用例</span><span class="v">42 <span class="unit">覆盖率 76%</span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- ========== 新岗位发现 ========== -->
       <div v-if="currentPage === 'discover'" class="fade-in">
         <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr);">
           <div class="stat-card blue">
-            <div class="stat-icon blue"><i class="fas fa-lightbulbo" aria-hidden="true"></i></div>
+            <div class="stat-icon blue"><i class="fas fa-lightbulb" aria-hidden="true"></i></div>
             <div class="stat-value">{{ discoverData.length }}</div>
             <div class="stat-label">候选新岗位</div>
           </div>
@@ -1541,7 +2069,7 @@ body {
 
         <div class="card">
           <div class="card-header">
-            <div class="card-title"><i class="fas fa-lightbulbo" aria-hidden="true"></i> 新岗位发现与定义</div>
+            <div class="card-title"><i class="fas fa-lightbulb" aria-hidden="true"></i> 新岗位发现与定义</div>
             <el-button type="primary" size="small" @click="loadDiscover" :loading="discoverLoading" aria-label="重新发现新岗位">
               <i class="fas fa-search" style="margin-right:6px" aria-hidden="true"></i>重新发现
             </el-button>
@@ -1663,26 +2191,240 @@ body {
         </div>
       </div>
 
-      <!-- ========== 人岗匹配 ========== -->
-      <div v-if="currentPage === 'match'" class="fade-in">
-        <div class="match-layout">
-          <!-- Left: Input -->
-          <div class="match-input-panel">
+      <!-- ========== 知识库 ========== -->
+      <div v-if="currentPage === 'knowledge'" class="fade-in">
+        <div class="stats-grid">
+          <div class="stat-card blue">
+            <div class="stat-icon blue"><i class="fas fa-book" aria-hidden="true"></i></div>
+            <div class="stat-value">{{ skillOntology.length }}</div>
+            <div class="stat-label">技能本体数</div>
+            <div class="stat-change up"><i class="fas fa-layer-group" aria-hidden="true"></i> {{ skillCategories.length }} 个分类</div>
+          </div>
+          <div class="stat-card green">
+            <div class="stat-icon green"><i class="fas fa-code-branch" aria-hidden="true"></i></div>
+            <div class="stat-value">{{ graphStats.edges || 0 }}</div>
+            <div class="stat-label">技能关联边</div>
+            <div class="stat-change up"><i class="fas fa-project-diagram" aria-hidden="true"></i> 岗位-技能图谱</div>
+          </div>
+          <div class="stat-card amber">
+            <div class="stat-icon amber"><i class="fas fa-tasks" aria-hidden="true"></i></div>
+            <div class="stat-value">{{ skillCategories.length }}</div>
+            <div class="stat-label">技能分类</div>
+            <div class="stat-change up"><i class="fas fa-folder" aria-hidden="true"></i> 含别名归一化</div>
+          </div>
+          <div class="stat-card purple">
+            <div class="stat-icon purple"><i class="fas fa-sync-alt" aria-hidden="true"></i></div>
+            <div class="stat-value">{{ skillOntology.filter(s => s.aliases.length > 0).length }}</div>
+            <div class="stat-label">含别名技能</div>
+            <div class="stat-change up"><i class="fas fa-spell-check" aria-hidden="true"></i> 别名反查表</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-database" aria-hidden="true"></i> 技能本体库</div>
+            <el-tag type="info" size="small">从系统技能字典实时生成</el-tag>
+          </div>
+          <div class="kb-search-bar">
+            <div class="graph-search" style="flex:1;max-width:300px">
+              <i class="fas fa-search" aria-hidden="true"></i>
+              <input v-model="kbSearch" @input="kbPage = 1" placeholder="搜索技能或别名..." aria-label="搜索技能本体">
+            </div>
+            <el-radio-group v-model="kbFilter" size="small" @change="kbPage = 1">
+              <el-radio-button label="all">全部</el-radio-button>
+              <el-radio-button label="编程语言">编程语言</el-radio-button>
+              <el-radio-button label="模型架构">模型架构</el-radio-button>
+              <el-radio-button label="算法">算法</el-radio-button>
+            </el-radio-group>
+          </div>
+
+          <div class="kb-cat-filter">
+            <span class="kb-chip" :class="{ active: kbCat === '' }" @click="kbCat = ''; kbPage = 1">全部 ({{ skillOntology.length }})</span>
+            <span v-for="c in skillCategories" :key="c" class="kb-chip" :class="{ active: kbCat === c }" @click="kbCat = c; kbPage = 1">{{ c }} ({{ skillOntology.filter(s => s.category === c).length }})</span>
+          </div>
+
+          <div class="kb-count">共 {{ filteredSkills.length }} 项</div>
+          <div v-if="filteredSkills.length === 0" style="text-align:center;padding:60px 0;color:var(--color-text-muted)">
+            <i class="fas fa-search" style="font-size:36px;margin-bottom:12px;display:block;opacity:0.3" aria-hidden="true"></i>
+            未找到匹配的技能
+          </div>
+          <div v-else class="kb-grid">
+            <div v-for="s in pagedSkills" :key="s.name" class="kb-card">
+              <div class="kb-card-icon" :style="{ background: catColor(s.category).bg, color: catColor(s.category).fg }"><i class="fas fa-code" aria-hidden="true"></i></div>
+              <div class="kb-card-title">{{ s.name }}</div>
+              <div class="kb-card-desc">{{ s.aliases.length ? '别名：' + s.aliases.slice(0, 4).join('、') + (s.aliases.length > 4 ? ' 等' : '') : '无别名' }}</div>
+              <div class="kb-card-meta">
+                <span class="tag tag-blue">{{ s.category }}</span>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:center;margin-top:var(--space-5)" v-if="kbTotalPages > 1">
+            <el-pagination background layout="prev, pager, next" :total="filteredSkills.length" :page-size="kbPageSize" v-model:current-page="kbPage" />
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== 个人简历 ========== -->
+      <div v-if="currentPage === 'profile'" class="fade-in">
+        <div class="profile-head">
+          <div class="profile-avatar"><i class="fas fa-user" aria-hidden="true"></i></div>
+          <div>
+            <div class="profile-name">{{ profile.name }}
+              <span v-if="profile.age" style="font-size:13px;font-weight:400;color:var(--color-text-muted);margin-left:6px">{{ profile.age }} 岁</span>
+              <span v-if="profile.gender" style="font-size:13px;font-weight:400;color:var(--color-text-muted);margin-left:6px">· {{ profile.gender }}</span>
+              <span v-if="profile.city" style="font-size:13px;font-weight:400;color:var(--color-text-muted);margin-left:6px">· {{ profile.city }}</span>
+            </div>
+            <div class="profile-tagline">{{ profile.headline }}</div>
+            <div v-if="profile.special" style="font-size:13px;color:var(--color-text-secondary);margin-top:6px;max-width:520px;line-height:1.6">
+              <i class="fas fa-star" style="color:var(--color-warning-500);margin-right:6px" aria-hidden="true"></i>{{ profile.special }}
+            </div>
+          </div>
+          <div style="margin-left:auto;text-align:right">
+            <div v-if="profile.phone" style="font-size:13px;color:var(--color-text-secondary)"><i class="fas fa-phone" style="margin-right:6px;color:var(--color-text-muted)" aria-hidden="true"></i>{{ profile.phone }}</div>
+            <div v-if="profile.email" style="font-size:13px;color:var(--color-text-secondary);margin-top:4px"><i class="fas fa-envelope" style="margin-right:6px;color:var(--color-text-muted)" aria-hidden="true"></i>{{ profile.email }}</div>
+          </div>
+        </div>
+
+        <!-- 基本信息（问答式，模拟真实简历） -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-id-card" aria-hidden="true"></i> 基本信息</div>
+            <el-button size="small" type="primary" @click="saveProfile" :loading="profileSaving">
+              <i class="fas fa-save" style="margin-right:6px" aria-hidden="true"></i>保存信息
+            </el-button>
+          </div>
+          <div class="profile-form">
+            <div class="pf-item">
+              <label class="pf-label" for="pfName">姓名</label>
+              <el-input id="pfName" v-model="profile.name" placeholder="请输入姓名" />
+            </div>
+            <div class="pf-item">
+              <label class="pf-label">性别</label>
+              <el-radio-group v-model="profile.gender">
+                <el-radio-button label="男">男</el-radio-button>
+                <el-radio-button label="女">女</el-radio-button>
+              </el-radio-group>
+            </div>
+            <div class="pf-item">
+              <label class="pf-label" for="pfAge">年龄</label>
+              <el-input-number id="pfAge" v-model="profile.age" :min="16" :max="70" controls-position="right" style="width:100%" />
+            </div>
+            <div class="pf-item">
+              <label class="pf-label" for="pfPhone">联系电话</label>
+              <el-input id="pfPhone" v-model="profile.phone" placeholder="请输入手机号">
+                <template #prefix><i class="fas fa-phone" style="color:var(--color-text-muted)" aria-hidden="true"></i></template>
+              </el-input>
+            </div>
+            <div class="pf-item">
+              <label class="pf-label" for="pfEmail">电子邮箱</label>
+              <el-input id="pfEmail" v-model="profile.email" placeholder="name@example.com">
+                <template #prefix><i class="fas fa-envelope" style="color:var(--color-text-muted)" aria-hidden="true"></i></template>
+              </el-input>
+            </div>
+            <div class="pf-item">
+              <label class="pf-label" for="pfCity">所在城市</label>
+              <el-input id="pfCity" v-model="profile.city" placeholder="如：北京" />
+            </div>
+            <div class="pf-item pf-full">
+              <label class="pf-label" for="pfTarget">期望岗位</label>
+              <el-select id="pfTarget" v-model="profile.targetRole" placeholder="选择期望岗位" filterable clearable style="width:100%">
+                <el-option v-for="r in roles" :key="r" :label="r" :value="r"></el-option>
+              </el-select>
+            </div>
+            <div class="pf-item pf-full">
+              <label class="pf-label" for="pfHeadline">个人简介 / 求职意向</label>
+              <el-input id="pfHeadline" v-model="profile.headline" type="textarea" :rows="2" placeholder="一句话介绍自己，如：5 年大模型算法经验，专注 RAG 与微调" />
+            </div>
+            <div class="pf-item pf-full">
+              <label class="pf-label" for="pfSpecial">特长 / 自我评价</label>
+              <el-input id="pfSpecial" v-model="profile.special" type="textarea" :rows="3" placeholder="例如：擅长跨团队协作、快速学习新技术；有从 0 到 1 落地 RAG 产品的经验" />
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-stats">
+          <div class="profile-stat"><div class="pi" style="color:var(--color-primary-500)"><i class="fas fa-cogs" aria-hidden="true"></i></div><div class="pv">{{ profile.skills.length }}</div><div class="pl">技能数量</div></div>
+          <div class="profile-stat"><div class="pi" style="color:var(--color-success-500)"><i class="fas fa-briefcase" aria-hidden="true"></i></div><div class="pv">{{ profile.years }} 年</div><div class="pl">工作年限</div></div>
+          <div class="profile-stat"><div class="pi" style="color:var(--color-warning-500)"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div><div class="pv">{{ profile.education }}</div><div class="pl">学历</div></div>
+          <div class="profile-stat"><div class="pi" style="color:var(--color-purple-500)"><i class="fas fa-award" aria-hidden="true"></i></div><div class="pv">{{ profile.strengths.length }}</div><div class="pl">优势岗位</div></div>
+        </div>
+
+        <div class="profile-grid">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title"><i class="fas fa-cogs" aria-hidden="true"></i> 技能画像</div>
+              <el-tag type="info" size="small">{{ profile.skills.length }} 项</el-tag>
+            </div>
+            <div v-if="profile.skills.length === 0" style="color:var(--color-text-muted);font-size:13px">
+              暂无技能数据，可在「人岗匹配」页上传或粘贴简历，系统会自动解析并沉淀技能画像。
+            </div>
+            <div v-else>
+              <div v-for="g in profileSkillGroups" :key="g.name" class="cat-block">
+                <div class="cat-block-title">{{ g.name }} <span class="cnt">({{ g.items.length }})</span></div>
+                <div class="skill-tags">
+                  <span v-for="s in g.items" :key="s" class="tag tag-green">{{ s }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
             <div class="card">
               <div class="card-header">
-                <div class="card-title"><i class="fas fa-user-tie" aria-hidden="true"></i> 人岗匹配诊断</div>
+                <div class="card-title"><i class="fas fa-bullseye" aria-hidden="true"></i> 优势岗位</div>
               </div>
-              <div style="margin-bottom:14px">
-                <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:8px">
-                  <label for="matchRoleSelect">目标岗位</label>
-                </div>
+              <div v-if="profile.strengths.length === 0" style="color:var(--color-text-muted);font-size:13px">暂无评估数据</div>
+              <div v-else class="skill-tags">
+                <span v-for="s in profile.strengths" :key="s.role" class="tag tag-blue" style="cursor:pointer" @click="goMatch(s.role)">
+                  {{ s.role }} <span style="opacity:0.7">({{ (s.score * 100).toFixed(0) }}%)</span>
+                </span>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title"><i class="fas fa-route" aria-hidden="true"></i> 学习建议</div>
+              </div>
+              <div v-if="profile.missingSkills.length === 0" style="color:var(--color-text-muted);font-size:13px">暂无缺失技能建议</div>
+              <div v-else class="skill-tags">
+                <span v-for="s in profile.missingSkills" :key="s" class="tag tag-amber">{{ s }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== 人岗匹配 ========== -->
+      <div v-if="currentPage === 'match'" class="fade-in">
+        <div class="match-page">
+          <!-- 顶部横幅 -->
+          <div class="match-hero">
+            <div class="match-hero-title"><i class="fas fa-diagnoses" style="color:var(--color-primary-500);margin-right:10px" aria-hidden="true"></i>人岗匹配诊断</div>
+            <div class="match-hero-sub">上传或粘贴简历，系统自动解析技能、工作经验与学历，量化岗位匹配度，并给出差距分析与学习路径建议。</div>
+            <div class="match-hero-actions">
+              <el-button type="primary" @click="fillSample" aria-label="填入示例简历">
+                <i class="fas fa-magic" style="margin-right:6px" aria-hidden="true"></i>填入示例简历
+              </el-button>
+              <el-button @click="match.resumeText = ''" aria-label="清空输入">
+                <i class="fas fa-eraser" style="margin-right:6px" aria-hidden="true"></i>清空输入
+              </el-button>
+            </div>
+          </div>
+
+          <!-- 第一步：填写信息 -->
+          <div class="card match-input-card">
+            <div class="match-step-head">
+              <span class="step-num">01</span>
+              <span class="match-step-title">填写简历信息</span>
+            </div>
+            <div class="match-input-grid">
+              <div class="match-field">
+                <label class="match-field-label" for="matchRoleSelect">目标岗位</label>
                 <el-select id="matchRoleSelect" v-model="match.role" placeholder="选择目标岗位" filterable style="width:100%" aria-label="选择目标岗位">
                   <el-option v-for="r in roles" :key="r" :label="r" :value="r"></el-option>
                 </el-select>
               </div>
-
-              <div style="margin-bottom:14px">
-                <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:8px">简历上传</div>
+              <div class="match-field">
+                <span class="match-field-label">上传简历</span>
                 <el-upload
                   ref="uploadRef"
                   drag
@@ -1694,43 +2436,36 @@ body {
                   style="width:100%"
                   aria-label="上传简历文件"
                 >
-                  <div style="padding:20px 0">
-                    <i class="fas fa-cloud-upload-alt" style="font-size:32px;color:var(--color-text-muted);margin-bottom:8px;display:block" aria-hidden="true"></i>
-                    <div style="font-size:13px;color:var(--color-text-secondary)">拖拽文件至此处，或 <em style="color:var(--color-primary-500)">点击上传</em></div>
-                    <div style="font-size:11px;color:var(--color-text-muted);margin-top:4px">支持 PDF / Word / TXT 格式</div>
+                  <div style="padding:10px 0">
+                    <i class="fas fa-cloud-upload-alt" style="font-size:24px;color:var(--color-text-muted);margin-bottom:6px;display:block" aria-hidden="true"></i>
+                    <div style="font-size:12px;color:var(--color-text-secondary)">拖拽文件，或 <em style="color:var(--color-primary-500)">点击上传</em></div>
+                    <div style="font-size:11px;color:var(--color-text-muted);margin-top:2px">PDF / Word / TXT</div>
                   </div>
                 </el-upload>
               </div>
-
-              <div style="margin-bottom:14px">
-                <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:8px">
-                  或粘贴简历文本
-                  <el-button link type="primary" size="small" @click="fillSample" style="margin-left:8px" aria-label="填入示例简历">
-                    <i class="fas fa-magic" style="margin-right:4px" aria-hidden="true"></i>填入示例
-                  </el-button>
-                </div>
-                <el-input v-model="match.resumeText" type="textarea" :rows="6" placeholder="例如：技能：Python、PyTorch、Deep Learning...&#10;项目经验：负责大模型微调与RAG应用...&#10;工作年限：4 年&#10;学历：硕士" aria-label="粘贴简历文本" />
+              <div class="match-field match-field-span">
+                <span class="match-field-label">或粘贴简历文本</span>
+                <el-input v-model="match.resumeText" type="textarea" :rows="8" placeholder="例如：技能：Python、PyTorch、Deep Learning...&#10;项目经验：负责大模型微调与RAG应用...&#10;工作年限：4 年&#10;学历：硕士" aria-label="粘贴简历文本" />
               </div>
-
-              <el-button type="primary" @click="doMatch" :loading="match.loading" style="width:100%" size="large" aria-label="开始人岗匹配诊断">
+            </div>
+            <div class="match-actions">
+              <el-button type="primary" @click="doMatch" :loading="match.loading" size="large" aria-label="开始人岗匹配诊断" style="min-width:240px">
                 <i class="fas fa-diagnoses" style="margin-right:8px" aria-hidden="true"></i>开始诊断
               </el-button>
             </div>
           </div>
 
-          <!-- Right: Result -->
-          <div class="match-result-panel">
-            <div v-if="match.loading" class="card" style="text-align:center;padding:60px 0" role="status" aria-live="polite">
-              <i class="fas fa-spinner fa-spin" style="font-size:32px;color:var(--color-primary-500)" aria-hidden="true"></i>
-              <div style="margin-top:12px;color:var(--color-text-muted)">正在分析匹配度...</div>
-            </div>
-            <template v-else-if="match.result">
-              <!-- Score Card -->
-              <div class="card" style="text-align:center">
-                <div id="radarChart" style="width:100%;height:240px" role="img" aria-label="匹配度雷达图"></div>
-                <div style="font-size:42px;font-weight:800;color:var(--color-primary-500);font-variant-numeric:tabular-nums">{{ (match.result.match.total_score * 100).toFixed(0) }}
-                  <span style="font-size:16px;color:var(--color-text-muted)">/ 100</span>
-                </div>
+          <!-- 结果 -->
+          <div v-if="match.loading" class="card" style="text-align:center;padding:60px 0" role="status" aria-live="polite">
+            <i class="fas fa-spinner fa-spin" style="font-size:32px;color:var(--color-primary-500)" aria-hidden="true"></i>
+            <div style="margin-top:12px;color:var(--color-text-muted)">正在分析匹配度...</div>
+          </div>
+
+          <template v-else-if="match.result">
+            <!-- 第二步：评分横幅 -->
+            <div class="match-summary">
+              <div>
+                <div class="match-score-big">{{ (match.result.match.total_score * 100).toFixed(0) }}<span class="unit">/ 100</span></div>
                 <div style="margin-top:8px">
                   <span :class="['tag', match.result.match.hard_gate_pass ? 'tag-green' : 'tag-red']">
                     <i :class="match.result.match.hard_gate_pass ? 'fas fa-check-circle' : 'fas fa-times-circle'" style="margin-right:4px" aria-hidden="true"></i>
@@ -1738,10 +2473,22 @@ body {
                   </span>
                 </div>
               </div>
+              <div class="match-summary-dim">
+                <div v-for="d in matchDimensions" :key="d.label" class="dim-chip">
+                  <span class="dv" :style="{ color: d.hex }">{{ d.value }}%</span>
+                  <span class="dl">{{ d.label }}</span>
+                </div>
+              </div>
+            </div>
 
-              <!-- Dimension Bars -->
+            <!-- 第三步：详情三栏 -->
+            <div class="match-detail-grid">
               <div class="card">
-                <div class="card-title" style="margin-bottom:14px"><i class="fas fa-chart-radar" aria-hidden="true"></i> 维度分析</div>
+                <div class="card-title" style="margin-bottom:14px"><i class="fas fa-chart-radar" aria-hidden="true"></i> 能力雷达</div>
+                <div id="radarChart" style="width:100%;height:280px" role="img" aria-label="匹配度雷达图"></div>
+              </div>
+              <div class="card">
+                <div class="card-title" style="margin-bottom:14px"><i class="fas fa-chart-bar" aria-hidden="true"></i> 维度分析</div>
                 <div class="dimension-bars">
                   <div class="dim-bar" v-for="d in matchDimensions" :key="d.label">
                     <div class="label">{{ d.label }}</div>
@@ -1750,8 +2497,6 @@ body {
                   </div>
                 </div>
               </div>
-
-              <!-- Skills -->
               <div class="card">
                 <div class="card-title" style="margin-bottom:14px"><i class="fas fa-check-double" aria-hidden="true"></i> 技能匹配</div>
                 <div style="margin-bottom:12px">
@@ -1769,41 +2514,41 @@ body {
                   </div>
                 </div>
               </div>
+            </div>
 
-              <!-- Explanations -->
-              <div class="card" v-if="match.result.match.explanations && match.result.match.explanations.length">
-                <div class="card-title" style="margin-bottom:14px"><i class="fas fa-stethoscope" aria-hidden="true"></i> 诊断解释</div>
-                <div v-for="(e, i) in match.result.match.explanations" :key="i" style="padding:8px 0;font-size:13px;color:var(--color-text-secondary);border-bottom:1px solid var(--color-border-default);line-height:1.6">
-                  <i class="fas fa-angle-right" style="color:var(--color-primary-500);margin-right:8px" aria-hidden="true"></i>{{ e }}
+            <!-- 第四步：诊断解释 -->
+            <div class="card match-explainer-card" v-if="match.result.match.explanations && match.result.match.explanations.length">
+              <div class="card-title" style="margin-bottom:14px"><i class="fas fa-stethoscope" aria-hidden="true"></i> 诊断解释</div>
+              <div v-for="(e, i) in match.result.match.explanations" :key="i" style="padding:8px 0;font-size:13px;color:var(--color-text-secondary);border-bottom:1px solid var(--color-border-default);line-height:1.6">
+                <i class="fas fa-angle-right" style="color:var(--color-primary-500);margin-right:8px" aria-hidden="true"></i>{{ e }}
+              </div>
+            </div>
+
+            <!-- 第五步：学习路径 -->
+            <div class="card match-path-card" v-if="match.result.learning_path && match.result.learning_path.length">
+              <div class="card-header">
+                <div class="card-title"><i class="fas fa-route" aria-hidden="true"></i> 推荐学习路径</div>
+                <el-tag type="info" size="small">基于技能先修 DAG 拓扑排序</el-tag>
+              </div>
+              <div class="match-path-h">
+                <div v-for="step in match.result.learning_path" :key="step.step" class="match-path-step">
+                  <div class="step-top">
+                    <span class="step-badge">{{ step.step }}</span>
+                    <span class="step-skill">{{ step.skill }}</span>
+                  </div>
+                  <div class="step-meta">
+                    <div><i class="fas fa-clock" style="margin-right:4px" aria-hidden="true"></i>预计 {{ step.estimated_hours }}h</div>
+                    <div v-if="step.prerequisite_of && step.prerequisite_of.length"><i class="fas fa-arrow-right" style="margin-right:4px" aria-hidden="true"></i>先修于 {{ step.prerequisite_of.join('、') }}</div>
+                    <div v-if="step.resources && step.resources.length"><i class="fas fa-book" style="margin-right:4px" aria-hidden="true"></i>{{ step.resources.slice(0, 2).join('、') }}</div>
+                  </div>
                 </div>
               </div>
-            </template>
-            <div v-else class="card" style="text-align:center;padding:60px 0;color:var(--color-text-muted)">
-              <i class="fas fa-user-check" style="font-size:40px;margin-bottom:12px;display:block;opacity:0.3" aria-hidden="true"></i>
-              输入简历信息并选择目标岗位开始诊断
             </div>
-          </div>
-        </div>
+          </template>
 
-        <!-- Learning Path -->
-        <div v-if="match.result && match.result.learning_path && match.result.learning_path.length" class="card fade-in" style="margin-top:20px">
-          <div class="card-header">
-            <div class="card-title"><i class="fas fa-route" aria-hidden="true"></i> 推荐学习路径</div>
-            <el-tag type="info" size="small">基于技能先修 DAG 拓扑排序</el-tag>
-          </div>
-          <div class="path-steps">
-            <div v-for="step in match.result.learning_path" :key="step.step" class="path-step" :data-step="step.step">
-              <div class="path-step-title">{{ step.skill }}</div>
-              <div class="path-step-meta">
-                <span><i class="fas fa-clock" style="margin-right:4px" aria-hidden="true"></i>{{ step.estimated_hours }}h</span>
-                <span v-if="step.prerequisite_of && step.prerequisite_of.length">
-                  <i class="fas fa-arrow-right" style="margin-right:4px" aria-hidden="true"></i>先修于: {{ step.prerequisite_of.join('、') }}
-                </span>
-                <span v-if="step.resources && step.resources.length">
-                  <i class="fas fa-book" style="margin-right:4px" aria-hidden="true"></i>{{ step.resources.slice(0, 2).join('、') }}
-                </span>
-              </div>
-            </div>
+          <div v-else class="card" style="text-align:center;padding:60px 0;color:var(--color-text-muted)">
+            <i class="fas fa-user-check" style="font-size:40px;margin-bottom:12px;display:block;opacity:0.3" aria-hidden="true"></i>
+            填写简历信息并选择目标岗位，点击「开始诊断」查看匹配结果
           </div>
         </div>
       </div>
@@ -1928,9 +2673,42 @@ body {
     </main>
   </div>
 
+  <!-- Login Modal -->
+  <div v-if="showLogin" class="login-modal" @click.self="showLogin = false">
+    <div class="login-card" role="dialog" aria-modal="true" aria-label="登录">
+      <div class="login-cover"></div>
+      <div class="login-body">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div class="login-title"><i class="fas fa-lock" style="color:var(--color-primary-500)" aria-hidden="true"></i> 登录</div>
+          <button class="node-detail-close" @click="showLogin = false" aria-label="关闭登录框"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="login-hint">演示账号：admin / admin123（也可直接以访客身份浏览）</div>
+        <el-form @submit.prevent>
+          <el-form-item>
+            <el-input v-model="loginForm.username" placeholder="用户名" size="large">
+              <template #prefix><i class="fas fa-user" style="color:var(--color-text-muted)" aria-hidden="true"></i></template>
+            </el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-input v-model="loginForm.password" type="password" placeholder="密码" size="large" show-password @keyup.enter="doLogin">
+              <template #prefix><i class="fas fa-lock" style="color:var(--color-text-muted)" aria-hidden="true"></i></template>
+            </el-input>
+          </el-form-item>
+          <el-button type="primary" size="large" style="width:100%" :loading="loginLoading" @click="doLogin">
+            <i class="fas fa-sign-in-alt" style="margin-right:6px" aria-hidden="true"></i>登录
+          </el-button>
+          <el-button size="large" style="width:100%;margin:10px 0 0 0" @click="guestLogin">
+            <i class="fas fa-user-circle" style="margin-right:6px" aria-hidden="true"></i>以访客身份进入
+          </el-button>
+        </el-form>
+      </div>
+    </div>
+  </div>
+
   <!-- About Dialog -->
   <el-drawer v-model="showAbout" title="关于系统" direction="rtl" size="400px" aria-label="关于系统">
     <div style="padding:0 8px">
+      <div style="height:120px;border-radius:var(--radius-lg);margin-bottom:14px;overflow:hidden;background-image:linear-gradient(135deg,rgba(59,130,246,0.5),rgba(139,92,246,0.5)),url('https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=800&q=70');background-size:cover;background-position:center" aria-hidden="true"></div>
       <h3 style="font-size:18px;margin-bottom:12px">岗位能力图谱系统</h3>
       <p style="font-size:13px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px">
         多源异构数据驱动岗位和能力图谱构建与动态演化分析研究系统。
@@ -1952,6 +2730,62 @@ const { createApp, ref, reactive, computed, onMounted, nextTick, watch } = Vue;
 
 const app = createApp({
   setup() {
+    // ===== Auth / Login =====
+    const currentUser = ref(null);
+    const showLogin = ref(false);
+    const loginLoading = ref(false);
+    const loginForm = reactive({ username: 'admin', password: '' });
+
+    function restoreUser() {
+      try {
+        const raw = localStorage.getItem('jag_user');
+        if (raw) currentUser.value = JSON.parse(raw);
+      } catch (e) { /* ignore */ }
+    }
+    function persistUser(u) {
+      currentUser.value = u;
+      try { localStorage.setItem('jag_user', JSON.stringify(u)); } catch (e) { /* ignore */ }
+    }
+    function clearUser() {
+      currentUser.value = null;
+      try { localStorage.removeItem('jag_user'); } catch (e) { /* ignore */ }
+    }
+    function guestLogin() {
+      persistUser({ username: 'guest', display_name: '访客', role: 'guest' });
+      showLogin.value = false;
+      ElementPlus.ElMessage.success('已进入，当前为访客身份');
+    }
+    async function doLogin() {
+      if (!loginForm.username.trim() || !loginForm.password.trim()) {
+        ElementPlus.ElMessage.warning('请输入用户名和密码');
+        return;
+      }
+      loginLoading.value = true;
+      try {
+        const data = await getJSON('/api/v1/auth/login', {
+          method: 'POST',
+          body: JSON.stringify({ username: loginForm.username, password: loginForm.password }),
+        });
+        if (data && data.token) {
+          persistUser(data.user || { username: loginForm.username, display_name: loginForm.username });
+          showLogin.value = false;
+          ElementPlus.ElMessage.success('登录成功，欢迎 ' + (currentUser.value.display_name || currentUser.value.username));
+        } else {
+          ElementPlus.ElMessage.error('用户名或密码错误');
+        }
+      } catch (e) {
+        ElementPlus.ElMessage.error('登录失败，请稍后重试');
+      } finally { loginLoading.value = false; }
+    }
+    function doLogout() {
+      clearUser();
+      ElementPlus.ElMessage.success('已退出登录');
+    }
+    function handleUserCommand(cmd) {
+      if (cmd === 'logout') doLogout();
+      else if (cmd === 'profile') currentPage.value = 'profile';
+    }
+
     // ===== Theme =====
     const isLightTheme = ref(false);
     function toggleTheme() {
@@ -1964,21 +2798,27 @@ const app = createApp({
     }
 
     // ===== Navigation =====
-    const currentPage = ref('graph');
+    const currentPage = ref('dashboard');
     const showAbout = ref(false);
     const globalLoading = ref(false);
 
     const navItems = [
+      { key: 'dashboard', label: '全景总览', icon: 'fas fa-th-large' },
       { key: 'graph', label: '全景图谱', icon: 'fas fa-project-diagram' },
-      { key: 'discover', label: '新岗位发现', icon: 'fas fa-lightbulbo' },
+      { key: 'discover', label: '新岗位发现', icon: 'fas fa-lightbulb' },
       { key: 'timeline', label: '岗位演化', icon: 'fas fa-history' },
+      { key: 'knowledge', label: '知识库', icon: 'fas fa-book' },
+      { key: 'profile', label: '个人简历', icon: 'fas fa-id-card' },
       { key: 'match', label: '人岗匹配', icon: 'fas fa-user-tie' },
     ];
 
     const pageTitles = {
+      dashboard: { title: '全景总览', desc: '系统核心指标、能力闭环与运行状态一屏尽览' },
       graph: { title: '全景图谱', desc: '新一代信息技术岗位技能关系可视化' },
       discover: { title: '新岗位发现', desc: '识别市场中正在萌芽的新兴岗位' },
       timeline: { title: '岗位演化', desc: '既有岗位能力动态更新与时间窗口对比' },
+      knowledge: { title: '知识库', desc: '技能本体库、别名归一化与分类体系' },
+      profile: { title: '个人简历', desc: '个人技能画像、优势岗位与学习建议' },
       match: { title: '人岗匹配', desc: '简历解析、差距分析与学习路径推荐' },
       governance: { title: '数据治理', desc: '可信度评分、质量诊断与幻觉防控' },
       eval: { title: '评测指标', desc: '核心指标验证与测试方案概览' },
@@ -2040,6 +2880,17 @@ const app = createApp({
     function graphResetView() {
       if (!graphChart) return;
       graphChart.setOption({ series: [{ zoom: 1 }] });
+    }
+
+    // 导出图谱为 PNG 图片
+    function exportGraph() {
+      if (!graphChart) { ElementPlus.ElMessage.warning('图谱尚未渲染'); return; }
+      const url = graphChart.getDataURL({ type: 'png', pixelRatio: 2, backgroundColor: isLightTheme.value ? '#ffffff' : '#0a0e1a' });
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = '岗位能力图谱.png';
+      a.click();
+      ElementPlus.ElMessage.success('图谱已导出');
     }
 
     // 搜索高亮
@@ -2350,6 +3201,128 @@ const app = createApp({
       }
     }
 
+    // ===== Knowledge Base =====
+    const skillOntology = ref([]);
+    const kbSearch = ref('');
+    const kbCat = ref('');
+    const kbFilter = ref('all');
+    const kbPage = ref(1);
+    const kbPageSize = 12;
+
+    const skillCategories = computed(() => {
+      const cats = new Set(skillOntology.value.map(s => s.category).filter(Boolean));
+      return [...cats].sort();
+    });
+
+    const filteredSkills = computed(() => {
+      const q = kbSearch.value.trim().toLowerCase();
+      return skillOntology.value.filter(s => {
+        if (kbCat.value && s.category !== kbCat.value) return false;
+        if (kbFilter.value !== 'all' && s.category !== kbFilter.value) return false;
+        if (!q) return true;
+        const hay = (s.name + ' ' + (s.aliases || []).join(' ')).toLowerCase();
+        return hay.includes(q);
+      });
+    });
+
+    const kbTotalPages = computed(() => Math.ceil(filteredSkills.value.length / kbPageSize));
+    const pagedSkills = computed(() => {
+      const start = (kbPage.value - 1) * kbPageSize;
+      return filteredSkills.value.slice(start, start + kbPageSize);
+    });
+
+    // 分类 -> 颜色（供标签/图标使用）
+    const CAT_COLORS = [
+      { bg: 'rgba(59,130,246,0.15)', fg: '#60a5fa' },
+      { bg: 'rgba(16,185,129,0.12)', fg: '#34d399' },
+      { bg: 'rgba(245,158,11,0.12)', fg: '#fbbf24' },
+      { bg: 'rgba(139,92,246,0.12)', fg: '#a78bfa' },
+      { bg: 'rgba(6,182,212,0.12)', fg: '#22d3ee' },
+      { bg: 'rgba(236,72,153,0.12)', fg: '#f472b6' },
+    ];
+    function catColor(cat) {
+      const idx = skillCategories.value.indexOf(cat);
+      return CAT_COLORS[Math.max(0, idx) % CAT_COLORS.length];
+    }
+
+    async function loadKnowledge() {
+      try {
+        const data = await getJSON('/api/v1/skills/ontology');
+        skillOntology.value = data.skills || [];
+      } catch (e) {
+        console.warn('[knowledge] load error:', e);
+      }
+    }
+
+    // ===== Profile =====
+    const profile = reactive({ name: '未登录求职者', gender: '', age: null, phone: '', email: '', city: '', targetRole: '', headline: '在「人岗匹配」页上传简历后，自动生成个人技能画像', special: '', skills: [], years: 0, education: '不限', strengths: [], missingSkills: [] });
+    const profileSaving = ref(false);
+    const PROFILE_KEY = 'jag_profile';
+
+    function loadProfile() {
+      try {
+        const raw = localStorage.getItem(PROFILE_KEY);
+        if (raw) Object.assign(profile, JSON.parse(raw));
+      } catch (e) { /* ignore */ }
+    }
+    function saveProfile() {
+      try {
+        localStorage.setItem(PROFILE_KEY, JSON.stringify({
+          name: profile.name, gender: profile.gender, age: profile.age,
+          phone: profile.phone, email: profile.email, city: profile.city,
+          targetRole: profile.targetRole, headline: profile.headline, special: profile.special,
+        }));
+        ElementPlus.ElMessage.success('基本信息已保存');
+      } catch (e) {
+        ElementPlus.ElMessage.error('保存失败');
+      }
+    }
+
+    const profileSkillGroups = computed(() => {
+      const groups = {};
+      profile.skills.forEach(s => {
+        const c = s.category || '其他';
+        (groups[c] = groups[c] || []).push(s.name);
+      });
+      return Object.entries(groups).map(([name, items]) => ({ name, items }));
+    });
+
+    function goMatch(role) {
+      match.role = role;
+      currentPage.value = 'match';
+    }
+
+    // ===== Dashboard =====
+    const dashboardStats = reactive({ roles: 0, skills: 0, edges: 0, growing: 0, industries: 0, levels: 0, highTrust: 95, avgTrust: 0, jobCount: 110, resumeCount: 20 });
+
+    const quickCards = [
+      { key: 'graph',     title: '全景图谱',     desc: '岗位-技能关系力导向可视化', icon: 'fas fa-project-diagram', color: 'qc-blue' },
+      { key: 'discover',  title: '新岗位发现',   desc: '识别市场中正在萌芽的新兴岗位', icon: 'fas fa-lightbulb', color: 'qc-cyan' },
+      { key: 'timeline',  title: '岗位演化',     desc: '时间窗口对比能力动态更新', icon: 'fas fa-history', color: 'qc-amber' },
+      { key: 'match',     title: '人岗匹配',     desc: '简历解析、差距分析与学习路径', icon: 'fas fa-user-tie', color: 'qc-green' },
+      { key: 'governance',title: '数据治理',     desc: '可信度评分、质量诊断与幻觉防控', icon: 'fas fa-shield-alt', color: 'qc-purple' },
+      { key: 'eval',      title: '评测指标',     desc: '核心指标验证与测试方案概览', icon: 'fas fa-chart-bar', color: 'qc-pink' },
+    ];
+
+    async function loadDashboard() {
+      try {
+        const data = await getJSON('/api/v1/graph/panorama');
+        const roleNodes = (data.nodes || []).filter(n => n.type === 'Role');
+        const skillNodes = (data.nodes || []).filter(n => n.type === 'Skill');
+        const growing = skillNodes.filter(n => n.trend_state && (n.trend_state === '增长' || n.trend_state === '萌芽'));
+        const scores = roleNodes.map(n => (n.trust_score || 0)).filter(s => s > 0);
+        dashboardStats.roles = roleNodes.length;
+        dashboardStats.skills = skillNodes.length;
+        dashboardStats.edges = (data.edges || []).length;
+        dashboardStats.growing = growing.length;
+        dashboardStats.industries = new Set(roleNodes.map(n => n.industry).filter(Boolean)).size;
+        dashboardStats.levels = new Set(roleNodes.map(n => n.level).filter(Boolean)).size;
+        dashboardStats.avgTrust = scores.length ? Math.round((scores.reduce((a, b) => a + b, 0) / scores.length) * 100) : 0;
+      } catch (e) {
+        console.warn('[dashboard] load error:', e);
+      }
+    }
+
     // ===== Discover =====
     const discoverData = ref([]);
     const discoverLoading = ref(false);
@@ -2388,11 +3361,11 @@ const app = createApp({
       if (!match.result) return [];
       const d = match.result.match.dimensions;
       return [
-        { label: '技能匹配', value: (d.skill_match * 100).toFixed(0), color: 'linear-gradient(90deg, #3b82f6, #8b5cf6)' },
-        { label: '工作经验', value: (d.experience * 100).toFixed(0), color: 'linear-gradient(90deg, #10b981, #06b6d4)' },
-        { label: '项目证据', value: (d.project_evidence * 100).toFixed(0), color: 'linear-gradient(90deg, #f59e0b, #f97316)' },
-        { label: '技能新鲜度', value: (d.skill_freshness * 100).toFixed(0), color: 'linear-gradient(90deg, #ec4899, #8b5cf6)' },
-        { label: '迁移能力', value: (d.transfer_ability * 100).toFixed(0), color: 'linear-gradient(90deg, #06b6d4, #3b82f6)' },
+        { label: '技能匹配', value: (d.skill_match * 100).toFixed(0), color: 'linear-gradient(90deg, #3b82f6, #8b5cf6)', hex: '#3b82f6' },
+        { label: '工作经验', value: (d.experience * 100).toFixed(0), color: 'linear-gradient(90deg, #10b981, #06b6d4)', hex: '#10b981' },
+        { label: '项目证据', value: (d.project_evidence * 100).toFixed(0), color: 'linear-gradient(90deg, #f59e0b, #f97316)', hex: '#f59e0b' },
+        { label: '技能新鲜度', value: (d.skill_freshness * 100).toFixed(0), color: 'linear-gradient(90deg, #ec4899, #8b5cf6)', hex: '#ec4899' },
+        { label: '迁移能力', value: (d.transfer_ability * 100).toFixed(0), color: 'linear-gradient(90deg, #06b6d4, #3b82f6)', hex: '#06b6d4' },
       ];
     });
 
@@ -2424,6 +3397,25 @@ const app = createApp({
       ElementPlus.ElMessage.warning('仅支持上传一个文件');
     }
 
+    // 匹配结果同步到「个人简历」画像
+    function syncProfileFromMatch(data) {
+      if (!data || !data.match) return;
+      const m = data.match;
+      profile.skills = (m.matched_skills || []).map(s => ({ name: s, category: skillOntology.value.find(o => o.name === s)?.category || '其他' }));
+      profile.missingSkills = m.missing_skills || [];
+      const d = m.dimensions || {};
+      profile.years = d.experience ? (d.experience * 5).toFixed(1) : 0;
+      // 尝试从简历原文解析学历
+      const edu = match.resumeText.match(/学历[：:]\s*([^\n\r]+)/);
+      if (edu) profile.education = edu[1].trim();
+      // 优势岗位：按分数排名，保留前 3
+      const sc = m.total_score;
+      if (sc >= 0.6) {
+        const existing = profile.strengths.filter(s => s.role !== match.role);
+        profile.strengths = [{ role: match.role, score: sc }, ...existing].slice(0, 3);
+      }
+    }
+
     async function doMatch() {
       if (!match.role) { ElementPlus.ElMessage.warning('请选择目标岗位'); return; }
       if (!match.resumeText.trim()) { ElementPlus.ElMessage.warning('请输入简历信息'); return; }
@@ -2434,9 +3426,16 @@ const app = createApp({
           body: JSON.stringify({ resume_text: match.resumeText, role_name: match.role }),
         });
         match.result = data;
+        syncProfileFromMatch(data);
+      } catch (e) {
+        ElementPlus.ElMessage.error('诊断失败，请稍后重试');
+      } finally {
+        // 先复位 loading，让 v-if 结果区渲染出 #radarChart 容器，
+        // 否则 renderRadar 在 DOM 里找不到元素、雷达图为空白。
+        match.loading = false;
         await nextTick();
         renderRadar();
-      } finally { match.loading = false; }
+      }
     }
 
     function renderRadar() {
@@ -2637,6 +3636,8 @@ const app = createApp({
         selectedNode.value = null;
       }
       await nextTick();
+      if (page === 'dashboard') loadDashboard();
+      if (page === 'knowledge' && !skillOntology.value.length) loadKnowledge();
       if (page === 'graph') renderGraph();
       if (page === 'discover' && !discoverData.value.length) loadDiscover();
       if (page === 'eval') { loadEval().then(() => nextTick().then(renderEvalBar)); }
@@ -2645,6 +3646,8 @@ const app = createApp({
 
     // ===== Init =====
     onMounted(async () => {
+      restoreUser();
+      loadProfile();
       await loadRoles();
       await loadEval();
       await nextTick();
@@ -2655,11 +3658,17 @@ const app = createApp({
       currentPage, showAbout, globalLoading, navItems,
       currentPageTitle, currentPageDesc,
       isLightTheme, toggleTheme,
+      currentUser, showLogin, loginForm, loginLoading, doLogin, doLogout, guestLogin, handleUserCommand,
+      profileSaving, saveProfile,
       roles, graphFilter, graphStats, industries, levels,
       renderGraph, refreshData,
       selectedNode, graphSearchText, graphDensity, growingRatio,
       topGrowingSkills, growingColors,
-      graphZoomIn, graphZoomOut, graphResetView, onGraphSearch, highlightNode,
+      graphZoomIn, graphZoomOut, graphResetView, onGraphSearch, highlightNode, exportGraph,
+      dashboardStats, quickCards, loadDashboard,
+      skillOntology, skillCategories, kbSearch, kbCat, kbFilter, kbPage, kbPageSize, kbTotalPages,
+      filteredSkills, pagedSkills, catColor, loadKnowledge,
+      profile, profileSkillGroups, goMatch,
       discoverData, discoverLoading, avgEmergence, discoverIndustries, loadDiscover,
       timeline, loadTimeline,
       match, matchDimensions, fillSample, doMatch, handleFileChange, handleExceed, uploadRef,

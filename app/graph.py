@@ -222,6 +222,22 @@ class TemporalGraph:
             edges.append({"source": u, "target": v, "relation": data.get("relation"),
                           "trust_score": data.get("trust_score", 0),
                           "is_required": data.get("is_required", True)})
+
+        # 节点可信度：取关联边 trust_score 均值；无关联边时给中性值 0.5。
+        # trust_score 本是边的属性（来源可信度），节点本身没有，这里聚合展示。
+        node_ts: dict[str, list[float]] = {}
+        for e in edges:
+            node_ts.setdefault(e["source"], []).append(e["trust_score"])
+            node_ts.setdefault(e["target"], []).append(e["trust_score"])
+        for n in nodes:
+            scores = node_ts.get(n["id"], [])
+            if scores:
+                ts = sum(scores) / len(scores)
+            elif n["type"] == "Role":
+                ts = 0.85  # 岗位节点默认高可信（来源于官方/招聘平台）
+            else:
+                ts = 0.5   # 技能节点中性
+            n["trust_score"] = round(ts, 4)
         return {"nodes": nodes, "edges": edges}
 
     def to_dict(self) -> dict:

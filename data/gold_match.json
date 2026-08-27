@@ -1,9 +1,9 @@
 [
   {
     "resume_id": "resume-01",
-    "role": "AI Agent 工程师",
+    "role": "大数据开发工程师",
     "match": 0,
-    "coverage": 0.5
+    "coverage": 0.333
   },
   {
     "resume_id": "resume-01",
@@ -13,43 +13,7 @@
   },
   {
     "resume_id": "resume-01",
-    "role": "机器人算法工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-01",
-    "role": "大模型算法工程师",
-    "match": 1,
-    "coverage": 1.0
-  },
-  {
-    "resume_id": "resume-01",
-    "role": "人工智能算法工程师",
-    "match": 1,
-    "coverage": 1.0
-  },
-  {
-    "resume_id": "resume-01",
     "role": "物联网嵌入式工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-01",
-    "role": "CV 算法工程师",
-    "match": 1,
-    "coverage": 0.667
-  },
-  {
-    "resume_id": "resume-01",
-    "role": "NLP 算法工程师",
-    "match": 1,
-    "coverage": 1.0
-  },
-  {
-    "resume_id": "resume-01",
-    "role": "Java 开发工程师",
     "match": 0,
     "coverage": 0.0
   },
@@ -67,9 +31,27 @@
   },
   {
     "resume_id": "resume-01",
-    "role": "大数据开发工程师",
+    "role": "机器人算法工程师",
     "match": 0,
-    "coverage": 0.333
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-01",
+    "role": "大模型算法工程师",
+    "match": 1,
+    "coverage": 1.0
+  },
+  {
+    "resume_id": "resume-01",
+    "role": "CV 算法工程师",
+    "match": 1,
+    "coverage": 0.667
+  },
+  {
+    "resume_id": "resume-01",
+    "role": "推荐算法工程师",
+    "match": 1,
+    "coverage": 0.667
   },
   {
     "resume_id": "resume-01",
@@ -79,15 +61,33 @@
   },
   {
     "resume_id": "resume-01",
-    "role": "推荐算法工程师",
+    "role": "AI Agent 工程师",
+    "match": 0,
+    "coverage": 0.5
+  },
+  {
+    "resume_id": "resume-01",
+    "role": "NLP 算法工程师",
     "match": 1,
-    "coverage": 0.667
+    "coverage": 1.0
+  },
+  {
+    "resume_id": "resume-01",
+    "role": "Java 开发工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-01",
+    "role": "人工智能算法工程师",
+    "match": 1,
+    "coverage": 1.0
   },
   {
     "resume_id": "resume-02",
-    "role": "AI Agent 工程师",
+    "role": "大数据开发工程师",
     "match": 0,
-    "coverage": 0.0
+    "coverage": 0.333
   },
   {
     "resume_id": "resume-02",
@@ -97,45 +97,9 @@
   },
   {
     "resume_id": "resume-02",
-    "role": "机器人算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-02",
-    "role": "大模型算法工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-02",
-    "role": "人工智能算法工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-02",
     "role": "物联网嵌入式工程师",
     "match": 0,
     "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-02",
-    "role": "CV 算法工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-02",
-    "role": "NLP 算法工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-02",
-    "role": "Java 开发工程师",
-    "match": 1,
-    "coverage": 1.0
   },
   {
     "resume_id": "resume-02",
@@ -151,9 +115,27 @@
   },
   {
     "resume_id": "resume-02",
-    "role": "大数据开发工程师",
+    "role": "机器人算法工程师",
     "match": 0,
     "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-02",
+    "role": "大模型算法工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-02",
+    "role": "CV 算法工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-02",
+    "role": "推荐算法工程师",
+    "match": 0,
+    "coverage": 0.0
   },
   {
     "resume_id": "resume-02",
@@ -163,15 +145,33 @@
   },
   {
     "resume_id": "resume-02",
-    "role": "推荐算法工程师",
+    "role": "AI Agent 工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-02",
+    "role": "NLP 算法工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-02",
+    "role": "Java 开发工程师",
+    "match": 1,
+    "coverage": 1.0
+  },
+  {
+    "resume_id": "resume-02",
+    "role": "人工智能算法工程师",
     "match": 0,
     "coverage": 0.0
   },
   {
     "resume_id": "resume-03",
-    "role": "AI Agent 工程师",
-    "match": 0,
-    "coverage": 0.25
+    "role": "大数据开发工程师",
+    "match": 1,
+    "coverage": 1.0
   },
   {
     "resume_id": "resume-03",
@@ -181,45 +181,9 @@
   },
   {
     "resume_id": "resume-03",
-    "role": "机器人算法工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-03",
-    "role": "大模型算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-03",
-    "role": "人工智能算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-03",
     "role": "物联网嵌入式工程师",
     "match": 0,
     "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-03",
-    "role": "CV 算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-03",
-    "role": "NLP 算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-03",
-    "role": "Java 开发工程师",
-    "match": 0,
-    "coverage": 0.333
   },
   {
     "resume_id": "resume-03",
@@ -235,13 +199,19 @@
   },
   {
     "resume_id": "resume-03",
-    "role": "大数据开发工程师",
-    "match": 1,
-    "coverage": 1.0
+    "role": "机器人算法工程师",
+    "match": 0,
+    "coverage": 0.0
   },
   {
     "resume_id": "resume-03",
-    "role": "MLOps 工程师",
+    "role": "大模型算法工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-03",
+    "role": "CV 算法工程师",
     "match": 0,
     "coverage": 0.333
   },
@@ -252,10 +222,40 @@
     "coverage": 0.333
   },
   {
-    "resume_id": "resume-04",
+    "resume_id": "resume-03",
+    "role": "MLOps 工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-03",
     "role": "AI Agent 工程师",
     "match": 0,
     "coverage": 0.25
+  },
+  {
+    "resume_id": "resume-03",
+    "role": "NLP 算法工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-03",
+    "role": "Java 开发工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-03",
+    "role": "人工智能算法工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-04",
+    "role": "大数据开发工程师",
+    "match": 0,
+    "coverage": 0.333
   },
   {
     "resume_id": "resume-04",
@@ -265,43 +265,7 @@
   },
   {
     "resume_id": "resume-04",
-    "role": "机器人算法工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-04",
-    "role": "大模型算法工程师",
-    "match": 1,
-    "coverage": 0.667
-  },
-  {
-    "resume_id": "resume-04",
-    "role": "人工智能算法工程师",
-    "match": 1,
-    "coverage": 0.667
-  },
-  {
-    "resume_id": "resume-04",
     "role": "物联网嵌入式工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-04",
-    "role": "CV 算法工程师",
-    "match": 1,
-    "coverage": 1.0
-  },
-  {
-    "resume_id": "resume-04",
-    "role": "NLP 算法工程师",
-    "match": 1,
-    "coverage": 0.667
-  },
-  {
-    "resume_id": "resume-04",
-    "role": "Java 开发工程师",
     "match": 0,
     "coverage": 0.0
   },
@@ -319,7 +283,25 @@
   },
   {
     "resume_id": "resume-04",
-    "role": "大数据开发工程师",
+    "role": "机器人算法工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-04",
+    "role": "大模型算法工程师",
+    "match": 1,
+    "coverage": 0.667
+  },
+  {
+    "resume_id": "resume-04",
+    "role": "CV 算法工程师",
+    "match": 1,
+    "coverage": 1.0
+  },
+  {
+    "resume_id": "resume-04",
+    "role": "推荐算法工程师",
     "match": 0,
     "coverage": 0.333
   },
@@ -331,13 +313,31 @@
   },
   {
     "resume_id": "resume-04",
-    "role": "推荐算法工程师",
+    "role": "AI Agent 工程师",
     "match": 0,
-    "coverage": 0.333
+    "coverage": 0.25
+  },
+  {
+    "resume_id": "resume-04",
+    "role": "NLP 算法工程师",
+    "match": 1,
+    "coverage": 0.667
+  },
+  {
+    "resume_id": "resume-04",
+    "role": "Java 开发工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-04",
+    "role": "人工智能算法工程师",
+    "match": 1,
+    "coverage": 0.667
   },
   {
     "resume_id": "resume-05",
-    "role": "AI Agent 工程师",
+    "role": "大数据开发工程师",
     "match": 0,
     "coverage": 0.0
   },
@@ -346,6 +346,24 @@
     "role": "边缘计算工程师",
     "match": 0,
     "coverage": 0.25
+  },
+  {
+    "resume_id": "resume-05",
+    "role": "物联网嵌入式工程师",
+    "match": 1,
+    "coverage": 1.0
+  },
+  {
+    "resume_id": "resume-05",
+    "role": "大模型应用开发工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-05",
+    "role": "知识图谱工程师",
+    "match": 0,
+    "coverage": 0.0
   },
   {
     "resume_id": "resume-05",
@@ -361,19 +379,25 @@
   },
   {
     "resume_id": "resume-05",
-    "role": "人工智能算法工程师",
+    "role": "CV 算法工程师",
     "match": 0,
     "coverage": 0.0
   },
   {
     "resume_id": "resume-05",
-    "role": "物联网嵌入式工程师",
-    "match": 1,
-    "coverage": 1.0
+    "role": "推荐算法工程师",
+    "match": 0,
+    "coverage": 0.0
   },
   {
     "resume_id": "resume-05",
-    "role": "CV 算法工程师",
+    "role": "MLOps 工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-05",
+    "role": "AI Agent 工程师",
     "match": 0,
     "coverage": 0.0
   },
@@ -391,45 +415,39 @@
   },
   {
     "resume_id": "resume-05",
-    "role": "大模型应用开发工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-05",
-    "role": "知识图谱工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-05",
-    "role": "大数据开发工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-05",
-    "role": "MLOps 工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-05",
-    "role": "推荐算法工程师",
+    "role": "人工智能算法工程师",
     "match": 0,
     "coverage": 0.0
   },
   {
     "resume_id": "resume-06",
-    "role": "AI Agent 工程师",
-    "match": 0,
-    "coverage": 0.25
+    "role": "大数据开发工程师",
+    "match": 1,
+    "coverage": 1.0
   },
   {
     "resume_id": "resume-06",
     "role": "边缘计算工程师",
     "match": 0,
     "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-06",
+    "role": "物联网嵌入式工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-06",
+    "role": "大模型应用开发工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-06",
+    "role": "知识图谱工程师",
+    "match": 0,
+    "coverage": 0.25
   },
   {
     "resume_id": "resume-06",
@@ -445,21 +463,27 @@
   },
   {
     "resume_id": "resume-06",
-    "role": "人工智能算法工程师",
-    "match": 1,
-    "coverage": 0.667
-  },
-  {
-    "resume_id": "resume-06",
-    "role": "物联网嵌入式工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-06",
     "role": "CV 算法工程师",
     "match": 0,
     "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-06",
+    "role": "推荐算法工程师",
+    "match": 1,
+    "coverage": 1.0
+  },
+  {
+    "resume_id": "resume-06",
+    "role": "MLOps 工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-06",
+    "role": "AI Agent 工程师",
+    "match": 0,
+    "coverage": 0.25
   },
   {
     "resume_id": "resume-06",
@@ -475,33 +499,69 @@
   },
   {
     "resume_id": "resume-06",
-    "role": "大模型应用开发工程师",
+    "role": "人工智能算法工程师",
+    "match": 1,
+    "coverage": 0.667
+  },
+  {
+    "resume_id": "resume-07",
+    "role": "大数据开发工程师",
     "match": 0,
     "coverage": 0.333
   },
   {
-    "resume_id": "resume-06",
+    "resume_id": "resume-07",
+    "role": "边缘计算工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-07",
+    "role": "物联网嵌入式工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-07",
+    "role": "大模型应用开发工程师",
+    "match": 1,
+    "coverage": 1.0
+  },
+  {
+    "resume_id": "resume-07",
     "role": "知识图谱工程师",
     "match": 0,
     "coverage": 0.25
   },
   {
-    "resume_id": "resume-06",
-    "role": "大数据开发工程师",
-    "match": 1,
-    "coverage": 1.0
+    "resume_id": "resume-07",
+    "role": "机器人算法工程师",
+    "match": 0,
+    "coverage": 0.0
   },
   {
-    "resume_id": "resume-06",
-    "role": "MLOps 工程师",
+    "resume_id": "resume-07",
+    "role": "大模型算法工程师",
+    "match": 1,
+    "coverage": 0.667
+  },
+  {
+    "resume_id": "resume-07",
+    "role": "CV 算法工程师",
     "match": 0,
     "coverage": 0.333
   },
   {
-    "resume_id": "resume-06",
+    "resume_id": "resume-07",
     "role": "推荐算法工程师",
-    "match": 1,
-    "coverage": 1.0
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-07",
+    "role": "MLOps 工程师",
+    "match": 0,
+    "coverage": 0.333
   },
   {
     "resume_id": "resume-07",
@@ -511,42 +571,6 @@
   },
   {
     "resume_id": "resume-07",
-    "role": "边缘计算工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-07",
-    "role": "机器人算法工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-07",
-    "role": "大模型算法工程师",
-    "match": 1,
-    "coverage": 0.667
-  },
-  {
-    "resume_id": "resume-07",
-    "role": "人工智能算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-07",
-    "role": "物联网嵌入式工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-07",
-    "role": "CV 算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-07",
     "role": "NLP 算法工程师",
     "match": 0,
     "coverage": 0.333
@@ -559,41 +583,17 @@
   },
   {
     "resume_id": "resume-07",
-    "role": "大模型应用开发工程师",
-    "match": 1,
-    "coverage": 1.0
-  },
-  {
-    "resume_id": "resume-07",
-    "role": "知识图谱工程师",
+    "role": "人工智能算法工程师",
     "match": 0,
-    "coverage": 0.25
+    "coverage": 0.333
   },
   {
-    "resume_id": "resume-07",
+    "resume_id": "resume-08",
     "role": "大数据开发工程师",
     "match": 0,
     "coverage": 0.333
   },
   {
-    "resume_id": "resume-07",
-    "role": "MLOps 工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-07",
-    "role": "推荐算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-08",
-    "role": "AI Agent 工程师",
-    "match": 0,
-    "coverage": 0.25
-  },
-  {
     "resume_id": "resume-08",
     "role": "边缘计算工程师",
     "match": 0,
@@ -601,43 +601,7 @@
   },
   {
     "resume_id": "resume-08",
-    "role": "机器人算法工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-08",
-    "role": "大模型算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-08",
-    "role": "人工智能算法工程师",
-    "match": 1,
-    "coverage": 0.667
-  },
-  {
-    "resume_id": "resume-08",
     "role": "物联网嵌入式工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-08",
-    "role": "CV 算法工程师",
-    "match": 1,
-    "coverage": 0.667
-  },
-  {
-    "resume_id": "resume-08",
-    "role": "NLP 算法工程师",
-    "match": 1,
-    "coverage": 1.0
-  },
-  {
-    "resume_id": "resume-08",
-    "role": "Java 开发工程师",
     "match": 0,
     "coverage": 0.0
   },
@@ -655,7 +619,25 @@
   },
   {
     "resume_id": "resume-08",
-    "role": "大数据开发工程师",
+    "role": "机器人算法工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-08",
+    "role": "大模型算法工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-08",
+    "role": "CV 算法工程师",
+    "match": 1,
+    "coverage": 0.667
+  },
+  {
+    "resume_id": "resume-08",
+    "role": "推荐算法工程师",
     "match": 0,
     "coverage": 0.333
   },
@@ -667,21 +649,57 @@
   },
   {
     "resume_id": "resume-08",
-    "role": "推荐算法工程师",
+    "role": "AI Agent 工程师",
     "match": 0,
-    "coverage": 0.333
+    "coverage": 0.25
+  },
+  {
+    "resume_id": "resume-08",
+    "role": "NLP 算法工程师",
+    "match": 1,
+    "coverage": 1.0
+  },
+  {
+    "resume_id": "resume-08",
+    "role": "Java 开发工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-08",
+    "role": "人工智能算法工程师",
+    "match": 1,
+    "coverage": 0.667
   },
   {
     "resume_id": "resume-09",
-    "role": "AI Agent 工程师",
+    "role": "大数据开发工程师",
     "match": 0,
-    "coverage": 0.0
+    "coverage": 0.333
   },
   {
     "resume_id": "resume-09",
     "role": "边缘计算工程师",
     "match": 0,
     "coverage": 0.25
+  },
+  {
+    "resume_id": "resume-09",
+    "role": "物联网嵌入式工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-09",
+    "role": "大模型应用开发工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-09",
+    "role": "知识图谱工程师",
+    "match": 0,
+    "coverage": 0.0
   },
   {
     "resume_id": "resume-09",
@@ -697,19 +715,25 @@
   },
   {
     "resume_id": "resume-09",
-    "role": "人工智能算法工程师",
+    "role": "CV 算法工程师",
     "match": 0,
     "coverage": 0.0
   },
   {
     "resume_id": "resume-09",
-    "role": "物联网嵌入式工程师",
+    "role": "推荐算法工程师",
     "match": 0,
-    "coverage": 0.333
+    "coverage": 0.0
   },
   {
     "resume_id": "resume-09",
-    "role": "CV 算法工程师",
+    "role": "MLOps 工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-09",
+    "role": "AI Agent 工程师",
     "match": 0,
     "coverage": 0.0
   },
@@ -727,45 +751,39 @@
   },
   {
     "resume_id": "resume-09",
-    "role": "大模型应用开发工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-09",
-    "role": "知识图谱工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-09",
-    "role": "大数据开发工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-09",
-    "role": "MLOps 工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-09",
-    "role": "推荐算法工程师",
+    "role": "人工智能算法工程师",
     "match": 0,
     "coverage": 0.0
   },
   {
     "resume_id": "resume-10",
-    "role": "AI Agent 工程师",
+    "role": "大数据开发工程师",
     "match": 0,
-    "coverage": 0.25
+    "coverage": 0.333
   },
   {
     "resume_id": "resume-10",
     "role": "边缘计算工程师",
     "match": 0,
     "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-10",
+    "role": "物联网嵌入式工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-10",
+    "role": "大模型应用开发工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-10",
+    "role": "知识图谱工程师",
+    "match": 0,
+    "coverage": 0.5
   },
   {
     "resume_id": "resume-10",
@@ -778,18 +796,6 @@
     "role": "大模型算法工程师",
     "match": 0,
     "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-10",
-    "role": "人工智能算法工程师",
-    "match": 1,
-    "coverage": 0.667
-  },
-  {
-    "resume_id": "resume-10",
-    "role": "物联网嵌入式工程师",
-    "match": 0,
-    "coverage": 0.0
   },
   {
     "resume_id": "resume-10",
@@ -799,31 +805,7 @@
   },
   {
     "resume_id": "resume-10",
-    "role": "NLP 算法工程师",
-    "match": 1,
-    "coverage": 0.667
-  },
-  {
-    "resume_id": "resume-10",
-    "role": "Java 开发工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-10",
-    "role": "大模型应用开发工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-10",
-    "role": "知识图谱工程师",
-    "match": 0,
-    "coverage": 0.5
-  },
-  {
-    "resume_id": "resume-10",
-    "role": "大数据开发工程师",
+    "role": "推荐算法工程师",
     "match": 0,
     "coverage": 0.333
   },
@@ -835,15 +817,33 @@
   },
   {
     "resume_id": "resume-10",
-    "role": "推荐算法工程师",
+    "role": "AI Agent 工程师",
     "match": 0,
-    "coverage": 0.333
+    "coverage": 0.25
+  },
+  {
+    "resume_id": "resume-10",
+    "role": "NLP 算法工程师",
+    "match": 1,
+    "coverage": 0.667
+  },
+  {
+    "resume_id": "resume-10",
+    "role": "Java 开发工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-10",
+    "role": "人工智能算法工程师",
+    "match": 1,
+    "coverage": 0.667
   },
   {
     "resume_id": "resume-11",
-    "role": "AI Agent 工程师",
-    "match": 0,
-    "coverage": 0.5
+    "role": "大数据开发工程师",
+    "match": 1,
+    "coverage": 0.667
   },
   {
     "resume_id": "resume-11",
@@ -853,45 +853,9 @@
   },
   {
     "resume_id": "resume-11",
-    "role": "机器人算法工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-11",
-    "role": "大模型算法工程师",
-    "match": 1,
-    "coverage": 0.667
-  },
-  {
-    "resume_id": "resume-11",
-    "role": "人工智能算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-11",
     "role": "物联网嵌入式工程师",
     "match": 0,
     "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-11",
-    "role": "CV 算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-11",
-    "role": "NLP 算法工程师",
-    "match": 1,
-    "coverage": 0.667
-  },
-  {
-    "resume_id": "resume-11",
-    "role": "Java 开发工程师",
-    "match": 0,
-    "coverage": 0.333
   },
   {
     "resume_id": "resume-11",
@@ -907,13 +871,19 @@
   },
   {
     "resume_id": "resume-11",
-    "role": "大数据开发工程师",
+    "role": "机器人算法工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-11",
+    "role": "大模型算法工程师",
     "match": 1,
     "coverage": 0.667
   },
   {
     "resume_id": "resume-11",
-    "role": "MLOps 工程师",
+    "role": "CV 算法工程师",
     "match": 0,
     "coverage": 0.333
   },
@@ -924,10 +894,40 @@
     "coverage": 0.333
   },
   {
-    "resume_id": "resume-12",
+    "resume_id": "resume-11",
+    "role": "MLOps 工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-11",
     "role": "AI Agent 工程师",
     "match": 0,
-    "coverage": 0.25
+    "coverage": 0.5
+  },
+  {
+    "resume_id": "resume-11",
+    "role": "NLP 算法工程师",
+    "match": 1,
+    "coverage": 0.667
+  },
+  {
+    "resume_id": "resume-11",
+    "role": "Java 开发工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-11",
+    "role": "人工智能算法工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-12",
+    "role": "大数据开发工程师",
+    "match": 1,
+    "coverage": 0.667
   },
   {
     "resume_id": "resume-12",
@@ -937,43 +937,7 @@
   },
   {
     "resume_id": "resume-12",
-    "role": "机器人算法工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-12",
-    "role": "大模型算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-12",
-    "role": "人工智能算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-12",
     "role": "物联网嵌入式工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-12",
-    "role": "CV 算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-12",
-    "role": "NLP 算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-12",
-    "role": "Java 开发工程师",
     "match": 0,
     "coverage": 0.0
   },
@@ -991,13 +955,19 @@
   },
   {
     "resume_id": "resume-12",
-    "role": "大数据开发工程师",
-    "match": 1,
-    "coverage": 0.667
+    "role": "机器人算法工程师",
+    "match": 0,
+    "coverage": 0.0
   },
   {
     "resume_id": "resume-12",
-    "role": "MLOps 工程师",
+    "role": "大模型算法工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-12",
+    "role": "CV 算法工程师",
     "match": 0,
     "coverage": 0.333
   },
@@ -1008,14 +978,62 @@
     "coverage": 0.333
   },
   {
-    "resume_id": "resume-13",
+    "resume_id": "resume-12",
+    "role": "MLOps 工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-12",
     "role": "AI Agent 工程师",
     "match": 0,
     "coverage": 0.25
   },
   {
+    "resume_id": "resume-12",
+    "role": "NLP 算法工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-12",
+    "role": "Java 开发工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-12",
+    "role": "人工智能算法工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-13",
+    "role": "大数据开发工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
     "resume_id": "resume-13",
     "role": "边缘计算工程师",
+    "match": 0,
+    "coverage": 0.25
+  },
+  {
+    "resume_id": "resume-13",
+    "role": "物联网嵌入式工程师",
+    "match": 1,
+    "coverage": 0.667
+  },
+  {
+    "resume_id": "resume-13",
+    "role": "大模型应用开发工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-13",
+    "role": "知识图谱工程师",
     "match": 0,
     "coverage": 0.25
   },
@@ -1033,21 +1051,27 @@
   },
   {
     "resume_id": "resume-13",
-    "role": "人工智能算法工程师",
+    "role": "CV 算法工程师",
+    "match": 1,
+    "coverage": 0.667
+  },
+  {
+    "resume_id": "resume-13",
+    "role": "推荐算法工程师",
     "match": 0,
     "coverage": 0.333
   },
   {
     "resume_id": "resume-13",
-    "role": "物联网嵌入式工程师",
-    "match": 1,
-    "coverage": 0.667
+    "role": "MLOps 工程师",
+    "match": 0,
+    "coverage": 0.333
   },
   {
     "resume_id": "resume-13",
-    "role": "CV 算法工程师",
-    "match": 1,
-    "coverage": 0.667
+    "role": "AI Agent 工程师",
+    "match": 0,
+    "coverage": 0.25
   },
   {
     "resume_id": "resume-13",
@@ -1063,43 +1087,37 @@
   },
   {
     "resume_id": "resume-13",
-    "role": "大模型应用开发工程师",
+    "role": "人工智能算法工程师",
     "match": 0,
     "coverage": 0.333
   },
   {
-    "resume_id": "resume-13",
-    "role": "知识图谱工程师",
-    "match": 0,
-    "coverage": 0.25
-  },
-  {
-    "resume_id": "resume-13",
+    "resume_id": "resume-14",
     "role": "大数据开发工程师",
     "match": 0,
     "coverage": 0.333
   },
   {
-    "resume_id": "resume-13",
-    "role": "MLOps 工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-13",
-    "role": "推荐算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
     "resume_id": "resume-14",
-    "role": "AI Agent 工程师",
+    "role": "边缘计算工程师",
     "match": 0,
     "coverage": 0.25
   },
   {
     "resume_id": "resume-14",
-    "role": "边缘计算工程师",
+    "role": "物联网嵌入式工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-14",
+    "role": "大模型应用开发工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-14",
+    "role": "知识图谱工程师",
     "match": 0,
     "coverage": 0.25
   },
@@ -1117,49 +1135,13 @@
   },
   {
     "resume_id": "resume-14",
-    "role": "人工智能算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-14",
-    "role": "物联网嵌入式工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-14",
     "role": "CV 算法工程师",
     "match": 0,
     "coverage": 0.333
   },
   {
     "resume_id": "resume-14",
-    "role": "NLP 算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-14",
-    "role": "Java 开发工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-14",
-    "role": "大模型应用开发工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-14",
-    "role": "知识图谱工程师",
-    "match": 0,
-    "coverage": 0.25
-  },
-  {
-    "resume_id": "resume-14",
-    "role": "大数据开发工程师",
+    "role": "推荐算法工程师",
     "match": 0,
     "coverage": 0.333
   },
@@ -1171,15 +1153,33 @@
   },
   {
     "resume_id": "resume-14",
-    "role": "推荐算法工程师",
+    "role": "AI Agent 工程师",
+    "match": 0,
+    "coverage": 0.25
+  },
+  {
+    "resume_id": "resume-14",
+    "role": "NLP 算法工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-14",
+    "role": "Java 开发工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-14",
+    "role": "人工智能算法工程师",
     "match": 0,
     "coverage": 0.333
   },
   {
     "resume_id": "resume-15",
-    "role": "AI Agent 工程师",
-    "match": 0,
-    "coverage": 0.25
+    "role": "大数据开发工程师",
+    "match": 1,
+    "coverage": 0.667
   },
   {
     "resume_id": "resume-15",
@@ -1189,43 +1189,7 @@
   },
   {
     "resume_id": "resume-15",
-    "role": "机器人算法工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-15",
-    "role": "大模型算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-15",
-    "role": "人工智能算法工程师",
-    "match": 1,
-    "coverage": 0.667
-  },
-  {
-    "resume_id": "resume-15",
     "role": "物联网嵌入式工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-15",
-    "role": "CV 算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-15",
-    "role": "NLP 算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-15",
-    "role": "Java 开发工程师",
     "match": 0,
     "coverage": 0.0
   },
@@ -1243,7 +1207,25 @@
   },
   {
     "resume_id": "resume-15",
-    "role": "大数据开发工程师",
+    "role": "机器人算法工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-15",
+    "role": "大模型算法工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-15",
+    "role": "CV 算法工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-15",
+    "role": "推荐算法工程师",
     "match": 1,
     "coverage": 0.667
   },
@@ -1255,9 +1237,87 @@
   },
   {
     "resume_id": "resume-15",
-    "role": "推荐算法工程师",
+    "role": "AI Agent 工程师",
+    "match": 0,
+    "coverage": 0.25
+  },
+  {
+    "resume_id": "resume-15",
+    "role": "NLP 算法工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-15",
+    "role": "Java 开发工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-15",
+    "role": "人工智能算法工程师",
     "match": 1,
     "coverage": 0.667
+  },
+  {
+    "resume_id": "resume-16",
+    "role": "大数据开发工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-16",
+    "role": "边缘计算工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-16",
+    "role": "物联网嵌入式工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-16",
+    "role": "大模型应用开发工程师",
+    "match": 1,
+    "coverage": 0.667
+  },
+  {
+    "resume_id": "resume-16",
+    "role": "知识图谱工程师",
+    "match": 0,
+    "coverage": 0.25
+  },
+  {
+    "resume_id": "resume-16",
+    "role": "机器人算法工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-16",
+    "role": "大模型算法工程师",
+    "match": 1,
+    "coverage": 1.0
+  },
+  {
+    "resume_id": "resume-16",
+    "role": "CV 算法工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-16",
+    "role": "推荐算法工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-16",
+    "role": "MLOps 工程师",
+    "match": 0,
+    "coverage": 0.333
   },
   {
     "resume_id": "resume-16",
@@ -1267,42 +1327,6 @@
   },
   {
     "resume_id": "resume-16",
-    "role": "边缘计算工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-16",
-    "role": "机器人算法工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-16",
-    "role": "大模型算法工程师",
-    "match": 1,
-    "coverage": 1.0
-  },
-  {
-    "resume_id": "resume-16",
-    "role": "人工智能算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-16",
-    "role": "物联网嵌入式工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-16",
-    "role": "CV 算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-16",
     "role": "NLP 算法工程师",
     "match": 0,
     "coverage": 0.333
@@ -1315,37 +1339,13 @@
   },
   {
     "resume_id": "resume-16",
-    "role": "大模型应用开发工程师",
-    "match": 1,
-    "coverage": 0.667
-  },
-  {
-    "resume_id": "resume-16",
-    "role": "知识图谱工程师",
-    "match": 0,
-    "coverage": 0.25
-  },
-  {
-    "resume_id": "resume-16",
-    "role": "大数据开发工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-16",
-    "role": "MLOps 工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-16",
-    "role": "推荐算法工程师",
+    "role": "人工智能算法工程师",
     "match": 0,
     "coverage": 0.333
   },
   {
     "resume_id": "resume-17",
-    "role": "AI Agent 工程师",
+    "role": "大数据开发工程师",
     "match": 0,
     "coverage": 0.0
   },
@@ -1357,45 +1357,9 @@
   },
   {
     "resume_id": "resume-17",
-    "role": "机器人算法工程师",
-    "match": 1,
-    "coverage": 0.667
-  },
-  {
-    "resume_id": "resume-17",
-    "role": "大模型算法工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-17",
-    "role": "人工智能算法工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-17",
     "role": "物联网嵌入式工程师",
     "match": 1,
     "coverage": 1.0
-  },
-  {
-    "resume_id": "resume-17",
-    "role": "CV 算法工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-17",
-    "role": "NLP 算法工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-17",
-    "role": "Java 开发工程师",
-    "match": 0,
-    "coverage": 0.333
   },
   {
     "resume_id": "resume-17",
@@ -1411,7 +1375,25 @@
   },
   {
     "resume_id": "resume-17",
-    "role": "大数据开发工程师",
+    "role": "机器人算法工程师",
+    "match": 1,
+    "coverage": 0.667
+  },
+  {
+    "resume_id": "resume-17",
+    "role": "大模型算法工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-17",
+    "role": "CV 算法工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-17",
+    "role": "推荐算法工程师",
     "match": 0,
     "coverage": 0.0
   },
@@ -1423,15 +1405,33 @@
   },
   {
     "resume_id": "resume-17",
-    "role": "推荐算法工程师",
+    "role": "AI Agent 工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-17",
+    "role": "NLP 算法工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-17",
+    "role": "Java 开发工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-17",
+    "role": "人工智能算法工程师",
     "match": 0,
     "coverage": 0.0
   },
   {
     "resume_id": "resume-18",
-    "role": "AI Agent 工程师",
+    "role": "大数据开发工程师",
     "match": 0,
-    "coverage": 0.25
+    "coverage": 0.333
   },
   {
     "resume_id": "resume-18",
@@ -1441,43 +1441,7 @@
   },
   {
     "resume_id": "resume-18",
-    "role": "机器人算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-18",
-    "role": "大模型算法工程师",
-    "match": 1,
-    "coverage": 0.667
-  },
-  {
-    "resume_id": "resume-18",
-    "role": "人工智能算法工程师",
-    "match": 1,
-    "coverage": 0.667
-  },
-  {
-    "resume_id": "resume-18",
     "role": "物联网嵌入式工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-18",
-    "role": "CV 算法工程师",
-    "match": 1,
-    "coverage": 0.667
-  },
-  {
-    "resume_id": "resume-18",
-    "role": "NLP 算法工程师",
-    "match": 1,
-    "coverage": 0.667
-  },
-  {
-    "resume_id": "resume-18",
-    "role": "Java 开发工程师",
     "match": 0,
     "coverage": 0.0
   },
@@ -1495,7 +1459,25 @@
   },
   {
     "resume_id": "resume-18",
-    "role": "大数据开发工程师",
+    "role": "机器人算法工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-18",
+    "role": "大模型算法工程师",
+    "match": 1,
+    "coverage": 0.667
+  },
+  {
+    "resume_id": "resume-18",
+    "role": "CV 算法工程师",
+    "match": 1,
+    "coverage": 0.667
+  },
+  {
+    "resume_id": "resume-18",
+    "role": "推荐算法工程师",
     "match": 0,
     "coverage": 0.333
   },
@@ -1507,15 +1489,33 @@
   },
   {
     "resume_id": "resume-18",
-    "role": "推荐算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-19",
     "role": "AI Agent 工程师",
     "match": 0,
     "coverage": 0.25
+  },
+  {
+    "resume_id": "resume-18",
+    "role": "NLP 算法工程师",
+    "match": 1,
+    "coverage": 0.667
+  },
+  {
+    "resume_id": "resume-18",
+    "role": "Java 开发工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-18",
+    "role": "人工智能算法工程师",
+    "match": 1,
+    "coverage": 0.667
+  },
+  {
+    "resume_id": "resume-19",
+    "role": "大数据开发工程师",
+    "match": 0,
+    "coverage": 0.333
   },
   {
     "resume_id": "resume-19",
@@ -1525,43 +1525,7 @@
   },
   {
     "resume_id": "resume-19",
-    "role": "机器人算法工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-19",
-    "role": "大模型算法工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-19",
-    "role": "人工智能算法工程师",
-    "match": 1,
-    "coverage": 1.0
-  },
-  {
-    "resume_id": "resume-19",
     "role": "物联网嵌入式工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-19",
-    "role": "CV 算法工程师",
-    "match": 1,
-    "coverage": 0.667
-  },
-  {
-    "resume_id": "resume-19",
-    "role": "NLP 算法工程师",
-    "match": 1,
-    "coverage": 1.0
-  },
-  {
-    "resume_id": "resume-19",
-    "role": "Java 开发工程师",
     "match": 0,
     "coverage": 0.0
   },
@@ -1579,9 +1543,27 @@
   },
   {
     "resume_id": "resume-19",
-    "role": "大数据开发工程师",
+    "role": "机器人算法工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-19",
+    "role": "大模型算法工程师",
     "match": 0,
     "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-19",
+    "role": "CV 算法工程师",
+    "match": 1,
+    "coverage": 0.667
+  },
+  {
+    "resume_id": "resume-19",
+    "role": "推荐算法工程师",
+    "match": 1,
+    "coverage": 0.667
   },
   {
     "resume_id": "resume-19",
@@ -1591,21 +1573,57 @@
   },
   {
     "resume_id": "resume-19",
-    "role": "推荐算法工程师",
+    "role": "AI Agent 工程师",
+    "match": 0,
+    "coverage": 0.25
+  },
+  {
+    "resume_id": "resume-19",
+    "role": "NLP 算法工程师",
     "match": 1,
-    "coverage": 0.667
+    "coverage": 1.0
+  },
+  {
+    "resume_id": "resume-19",
+    "role": "Java 开发工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-19",
+    "role": "人工智能算法工程师",
+    "match": 1,
+    "coverage": 1.0
   },
   {
     "resume_id": "resume-20",
-    "role": "AI Agent 工程师",
+    "role": "大数据开发工程师",
     "match": 0,
-    "coverage": 0.0
+    "coverage": 0.333
   },
   {
     "resume_id": "resume-20",
     "role": "边缘计算工程师",
     "match": 0,
     "coverage": 0.25
+  },
+  {
+    "resume_id": "resume-20",
+    "role": "物联网嵌入式工程师",
+    "match": 0,
+    "coverage": 0.333
+  },
+  {
+    "resume_id": "resume-20",
+    "role": "大模型应用开发工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-20",
+    "role": "知识图谱工程师",
+    "match": 0,
+    "coverage": 0.0
   },
   {
     "resume_id": "resume-20",
@@ -1621,19 +1639,25 @@
   },
   {
     "resume_id": "resume-20",
-    "role": "人工智能算法工程师",
+    "role": "CV 算法工程师",
     "match": 0,
     "coverage": 0.0
   },
   {
     "resume_id": "resume-20",
-    "role": "物联网嵌入式工程师",
+    "role": "推荐算法工程师",
     "match": 0,
-    "coverage": 0.333
+    "coverage": 0.0
   },
   {
     "resume_id": "resume-20",
-    "role": "CV 算法工程师",
+    "role": "MLOps 工程师",
+    "match": 0,
+    "coverage": 0.0
+  },
+  {
+    "resume_id": "resume-20",
+    "role": "AI Agent 工程师",
     "match": 0,
     "coverage": 0.0
   },
@@ -1651,31 +1675,7 @@
   },
   {
     "resume_id": "resume-20",
-    "role": "大模型应用开发工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-20",
-    "role": "知识图谱工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-20",
-    "role": "大数据开发工程师",
-    "match": 0,
-    "coverage": 0.333
-  },
-  {
-    "resume_id": "resume-20",
-    "role": "MLOps 工程师",
-    "match": 0,
-    "coverage": 0.0
-  },
-  {
-    "resume_id": "resume-20",
-    "role": "推荐算法工程师",
+    "role": "人工智能算法工程师",
     "match": 0,
     "coverage": 0.0
   }
