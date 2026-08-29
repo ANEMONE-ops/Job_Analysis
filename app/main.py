@@ -187,6 +187,10 @@ class IngestRequest(BaseModel):
     jobs: list[dict] = Field(default_factory=list)
 
 
+class QARequest(BaseModel):
+    question: str = ""
+
+
 # ---------- 认证（演示用，默认账号 admin/admin123） ----------
 @app.post("/api/v1/auth/login")
 def auth_login(req: LoginRequest):
@@ -336,6 +340,15 @@ def learning_paths(req: MatchRequest):
 @app.post("/api/v1/reviews/{claim_id}/approve")
 def approve_claim(claim_id: str):
     return {"claim_id": claim_id, "status": "approved", "note": "审核通过（演示）"}
+
+
+# ---------- 智能问答 ----------
+@app.post("/api/v1/qa/ask")
+def qa_ask(req: QARequest):
+    """智能问答：正则意图匹配 + 本地图谱查询（不依赖外部 LLM API）。"""
+    from .qa import answer as qa_answer
+    p = get_pipeline()
+    return qa_answer(req.question, p, config)
 
 
 # ---------- 评测 ----------

@@ -1696,6 +1696,84 @@ body {
   0%, 100% { shadowBlur: 4; }
   50% { shadowBlur: 16; }
 }
+
+/* ===== 智能问答 ===== */
+.qa-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 16px;
+  align-items: start;
+}
+@media (max-width: 960px) {
+  .qa-layout { grid-template-columns: 1fr; }
+}
+.qa-chat-card { display: flex; flex-direction: column; padding: 0; overflow: hidden; }
+.qa-messages {
+  height: 56vh; min-height: 380px;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.qa-msg { display: flex; gap: 10px; align-items: flex-start; }
+.qa-msg-user { flex-direction: row-reverse; }
+.qa-avatar {
+  width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--color-primary-alpha15);
+  color: var(--color-primary-400);
+  font-size: 15px;
+}
+.qa-avatar-user { background: rgba(16,185,129,0.15); color: #34d399; }
+.qa-bubble {
+  max-width: 76%;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-default);
+  border-radius: 12px 12px 12px 4px;
+  padding: 10px 14px;
+}
+.qa-bubble-user {
+  background: var(--color-primary-alpha15);
+  border-color: var(--color-primary-alpha30);
+  border-radius: 12px 12px 4px 12px;
+}
+.qa-bubble-text {
+  white-space: pre-wrap; word-break: break-word;
+  font-size: 14px; line-height: 1.7;
+}
+.qa-intent-tag {
+  margin-top: 8px; padding-top: 8px;
+  border-top: 1px dashed var(--color-border-subtle);
+  font-size: 11px; color: var(--color-text-muted);
+}
+.qa-input-row {
+  display: flex; gap: 10px;
+  padding: 14px 16px;
+  border-top: 1px solid var(--color-border-subtle);
+  background: var(--color-bg-surface);
+}
+.qa-input-row .el-input { flex: 1; }
+.qa-side { display: flex; flex-direction: column; gap: 16px; }
+.qa-suggestions { display: flex; flex-direction: column; gap: 8px; }
+.qa-suggest-btn {
+  text-align: left;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border-default);
+  background: var(--color-bg-elevated);
+  color: var(--color-text);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.qa-suggest-btn:hover:not(:disabled) {
+  border-color: var(--color-primary-500);
+  background: var(--color-primary-alpha10);
+}
+.qa-suggest-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.qa-typing .qa-dot { animation: qaBlink 1.2s infinite; }
+.qa-typing .qa-dot:nth-child(2) { animation-delay: 0.2s; }
+.qa-typing .qa-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes qaBlink { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
 </style>
 </head>
 <body>
@@ -2553,6 +2631,55 @@ body {
         </div>
       </div>
 
+      <!-- ========== 智能问答 ========== -->
+      <div v-if="currentPage === 'qa'" class="fade-in">
+        <div class="qa-layout">
+          <div class="card qa-chat-card">
+            <div class="qa-messages" ref="qaMessagesEl" aria-live="polite">
+              <div v-for="(msg, idx) in qaMessages" :key="idx"
+                   class="qa-msg" :class="msg.role === 'user' ? 'qa-msg-user' : 'qa-msg-bot'">
+                <div class="qa-avatar" :class="msg.role === 'user' ? 'qa-avatar-user' : ''" aria-hidden="true">
+                  <i :class="msg.role === 'user' ? 'fas fa-user' : 'fas fa-robot'"></i>
+                </div>
+                <div class="qa-bubble" :class="msg.role === 'user' ? 'qa-bubble-user' : ''">
+                  <div class="qa-bubble-text" v-if="msg.role === 'bot'" v-html="qaRender(msg.text)"></div>
+                  <div class="qa-bubble-text" v-else>{{ msg.text }}</div>
+                  <div v-if="msg.intent && msg.intent !== 'fallback'" class="qa-intent-tag" :aria-label="'意图类型 ' + msg.intent">意图 · {{ intentLabel(msg.intent) }}</div>
+                </div>
+              </div>
+              <div v-if="qaLoading" class="qa-msg qa-msg-bot">
+                <div class="qa-avatar" aria-hidden="true"><i class="fas fa-robot"></i></div>
+                <div class="qa-bubble"><div class="qa-bubble-text qa-typing">正在查询图谱<span class="qa-dot">·</span><span class="qa-dot">·</span><span class="qa-dot">·</span></div></div>
+              </div>
+            </div>
+            <div class="qa-input-row">
+              <el-input v-model="qaInput" placeholder="输入问题，如：人工智能算法工程师需要什么技能？"
+                        size="large" @keyup.enter="askQuestion" :disabled="qaLoading"
+                        aria-label="问答输入框" clearable></el-input>
+              <el-button type="primary" size="large" @click="askQuestion" :loading="qaLoading" aria-label="发送问题">
+                <i class="fas fa-paper-plane" style="margin-right:4px" aria-hidden="true"></i>发送
+              </el-button>
+            </div>
+          </div>
+          <div class="qa-side">
+            <div class="card">
+              <h3 style="margin:0 0 12px;font-size:15px"><i class="fas fa-lightbulb" style="color:var(--color-warning);margin-right:6px" aria-hidden="true"></i>试试这样问</h3>
+              <div class="qa-suggestions">
+                <button v-for="(s, i) in qaSuggestions" :key="i" class="qa-suggest-btn"
+                        @click="askSuggestion(s)" :disabled="qaLoading">{{ s }}</button>
+              </div>
+            </div>
+            <div class="card">
+              <h3 style="margin:0 0 12px;font-size:15px"><i class="fas fa-shield-alt" style="color:var(--color-success);margin-right:6px" aria-hidden="true"></i>可追溯 · 零幻觉</h3>
+              <p style="margin:0;color:var(--color-text-muted);font-size:13px;line-height:1.8">
+                问答基于<b>正则意图匹配</b>理解问题，所有答案均实时查询本地岗位能力图谱生成，
+                不依赖外部大模型 API——每个数字都有图谱数据支撑，无法回答时明确告知而不是编造。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- ========== 数据治理 ========== -->
       <div v-if="currentPage === 'governance'" class="fade-in">
         <div class="stats-grid">
@@ -2810,6 +2937,7 @@ const app = createApp({
       { key: 'knowledge', label: '知识库', icon: 'fas fa-book' },
       { key: 'profile', label: '个人简历', icon: 'fas fa-id-card' },
       { key: 'match', label: '人岗匹配', icon: 'fas fa-user-tie' },
+      { key: 'qa', label: '智能问答', icon: 'fas fa-robot' },
     ];
 
     const pageTitles = {
@@ -2820,6 +2948,7 @@ const app = createApp({
       knowledge: { title: '知识库', desc: '技能本体库、别名归一化与分类体系' },
       profile: { title: '个人简历', desc: '个人技能画像、优势岗位与学习建议' },
       match: { title: '人岗匹配', desc: '简历解析、差距分析与学习路径推荐' },
+      qa: { title: '智能问答', desc: '基于知识图谱的正则意图问答，答案可追溯、零幻觉' },
       governance: { title: '数据治理', desc: '可信度评分、质量诊断与幻觉防控' },
       eval: { title: '评测指标', desc: '核心指标验证与测试方案概览' },
     };
@@ -3644,12 +3773,74 @@ const app = createApp({
       if (page === 'governance') { loadEval().then(() => nextTick().then(renderGovCharts)); }
     });
 
+    // ===== 智能问答 =====
+    const qaMessages = ref([{
+      role: 'bot',
+      text: '你好！我是岗位能力图谱助手 🤖\n所有回答均基于本地知识图谱实时生成，试试下面的推荐问题，或直接输入你的问题～',
+      intent: '',
+    }]);
+    const qaInput = ref('');
+    const qaLoading = ref(false);
+    const qaMessagesEl = ref(null);
+    const qaSuggestions = ref([
+      '人工智能算法工程师需要什么技能？',
+      '哪些岗位需要 Python？',
+      '系统里有哪些岗位？',
+      '图谱里有多少数据？',
+      '评测指标怎么样？',
+      '有什么新兴岗位？',
+    ]);
+    const qaIntentLabels = {
+      greeting: '问候', help: '帮助', thanks: '礼貌回复', metrics: '评测指标',
+      scale: '数据规模', new_roles: '新岗位发现', role_list: '岗位列表',
+      industry: '行业覆盖', match_guide: '匹配引导', role_skills: '岗位→技能',
+      skill_roles: '技能→岗位', fallback: '未识别',
+    };
+    function intentLabel(intent) { return qaIntentLabels[intent] || intent; }
+    // 机器人消息轻量渲染：先转义 HTML 防 XSS，再把 **xx** 转为加粗
+    function qaRender(text) {
+      const esc = String(text)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      return esc.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    }
+    function _qaScrollBottom() {
+      nextTick().then(() => {
+        if (qaMessagesEl.value) qaMessagesEl.value.scrollTop = qaMessagesEl.value.scrollHeight;
+      });
+    }
+    async function askQuestion() {
+      const q = qaInput.value.trim();
+      if (!q || qaLoading.value) return;
+      qaMessages.value.push({ role: 'user', text: q });
+      qaInput.value = '';
+      qaLoading.value = true;
+      _qaScrollBottom();
+      try {
+        const data = await getJSON('/api/v1/qa/ask', {
+          method: 'POST',
+          body: JSON.stringify({ question: q }),
+        });
+        qaMessages.value.push({ role: 'bot', text: data.answer || '（无回答）', intent: data.intent || '' });
+        if (data.suggestions && data.suggestions.length) qaSuggestions.value = data.suggestions;
+      } catch (e) {
+        qaMessages.value.push({ role: 'bot', text: '⚠️ 问答服务暂时不可用，请稍后重试。', intent: '' });
+      } finally {
+        qaLoading.value = false;
+        _qaScrollBottom();
+      }
+    }
+    function askSuggestion(s) {
+      qaInput.value = s;
+      askQuestion();
+    }
+
     // ===== Init =====
     onMounted(async () => {
       restoreUser();
       loadProfile();
       await loadRoles();
       await loadEval();
+      loadDashboard();
       await nextTick();
       renderGraph();
     });
@@ -3672,6 +3863,7 @@ const app = createApp({
       discoverData, discoverLoading, avgEmergence, discoverIndustries, loadDiscover,
       timeline, loadTimeline,
       match, matchDimensions, fillSample, doMatch, handleFileChange, handleExceed, uploadRef,
+      qaMessages, qaInput, qaLoading, qaMessagesEl, qaSuggestions, askQuestion, askSuggestion, intentLabel, qaRender,
       evalData, evalMetrics,
       govStats, trustSources,
     };
